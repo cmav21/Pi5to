@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import 'bulma';
 import axios from 'axios';
+import { connect } from 'react-redux'
+import { resourcesFound } from '../../actions/UserActions'
+import { withRouter } from 'react-router-dom'
 
 class Body extends Component {
-  state = { busqueda: "", buscarPor: "" }
+  state = { busqueda: "", buscarPor: "name" }
   buttonStyle = { width: "45%", marginRight: "5%" }
   
   handleBusqueda = (e) => this.setState({ busqueda: e.target.value})
   handleBuscarPor = (e) => this.setState({ buscarPor : e.target.value })
 
   buscar = (e) => {
-    console.log(this.state);
     const data = {};
     data[this.state.buscarPor] = this.state.busqueda
+
     axios.post('http://localhost:8080/recursos/find', data)
     .then((res)=>{
-      console.log(res);
+      this.props.resourcesFound(res.data)
+      this.props.history.push('/searchresult')
+    })
+    .catch( error => {
+      this.props.resourcesFound(error)
     })
   }
 
@@ -34,7 +41,7 @@ class Body extends Component {
               onChange={this.handleBusqueda}/>
             <div className="control column is-12 center has-text-centered">
               <label className="radio">
-                <input name="buscarPor" type="radio" value="name" onClick={this.handleBuscarPor}/>
+                <input name="buscarPor" type="radio" value="name" onClick={this.handleBuscarPor} defaultChecked/>
                 Nombre
                 </label>
               <label className="radio">
@@ -65,4 +72,11 @@ class Body extends Component {
   }
 }
 
-export default Body;
+let HomePageBody = Body
+HomePageBody = connect(state=>({
+  users: state.users
+}), {
+  resourcesFound
+})(Body)
+
+export default withRouter(HomePageBody);
