@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MainRoutes from './components/routes/MainRoutes';
+import MainRoutes from './routes/MainRoutes';
 
 class App extends Component {
   render() {
