@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ResourceCard from "./ResourceCard"
+import ResourceCard from "../Resources/ResourceCard"
 
 class Result extends Component {
   render() {
@@ -13,7 +13,7 @@ class Result extends Component {
               "numLikes": 5,
               "numConsultas": 5,
               "categoria": "134",
-              "formato": "course",
+              "formato": "word",
               "nombre": "Clojure para dummies",
               "autor": "Jobs",
               "edicion": "1",

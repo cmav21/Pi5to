@@ -28,6 +28,9 @@ class TopBar extends Component {
                 <Link to="/about" className="navbar-item">
                   ¿Qué es UCHub?
                 </Link>
+                <Link to="/repositories" className="navbar-item">
+                  Repositorios
+                </Link>
                 <span className="navbar-item">
                   <a className="button is-dark is-inverted">
                     <span className="icon">
