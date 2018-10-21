@@ -1,0 +1,1 @@
+export const GET_RESOURCES_BY = "GET_RESOURCES_BY"
