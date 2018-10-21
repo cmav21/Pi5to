@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import MainRoutes from './routes/MainRoutes';
 
 class App extends Component {
-  render() {
+
+  render () {
     return (
       <div>
         <MainRoutes/>
