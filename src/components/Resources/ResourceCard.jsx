@@ -25,7 +25,7 @@ const ResourceCard = ( resource ) => {
           </p>
           <span class="tag is-danger is-large">
             <i class="fas fa-heart"></i>
-            {' ' + resource.numLikes}
+            <p className="numLikes">{' ' + resource.numLikes}</p>
           </span>
         </div>
       </div>
