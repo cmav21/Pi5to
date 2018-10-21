@@ -9,7 +9,7 @@ const ResourceCard = ( resource ) => {
   const format = getResourceFormat(resource.formato.toUpperCase())
 
   return (<div className="column is-one-third">
-    <div className="card large">
+    <div className="card">
       <div className="card-content">
         <div className="media">
           <div className="media-content">
@@ -20,13 +20,15 @@ const ResourceCard = ( resource ) => {
         </div>
         <div className="content formatoWraper">
           {resource.descripcion}
-          <p>
-            <i className={ format + " formatoIcon"}></i>
-          </p>
-          <span class="tag is-danger is-large">
-            <i class="fas fa-heart"></i>
-            <p className="numLikes">{' ' + resource.numLikes}</p>
-          </span>
+          <div className="is-clearfix">
+            <p className="is-pulled-right">
+              <i className={ format + " formatoIcon"}></i>
+            </p>
+            <span className="tag is-danger is-large likes is-pulled-left">
+              <i className="fas fa-heart"></i>
+              <p className="numLikes">{' ' + resource.numLikes}</p>
+            </span>
+          </div>
         </div>
       </div>
     </div>

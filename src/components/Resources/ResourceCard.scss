@@ -1,15 +1,17 @@
+.likes{
+  margin-top: 1vw;
 
-.numLikes {
-  top : -5px;
-}
-
-.formatoWraper {
-  height: 10em ;
-  
-  .formatoIcon {
-    margin-top: 10px;
-    font-size: 5em;
-    float: right;
+  .numLikes {
+    position: relative;
+    top : -1px;
+    padding-left: 10px;
   }
-
 }
+
+
+.formatoIcon {
+  margin-top: 10px;
+  opacity: 0.2;
+  font-size: 5em;
+}
+

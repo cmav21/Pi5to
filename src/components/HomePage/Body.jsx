@@ -13,17 +13,30 @@ class Body extends Component {
   handleBuscarPor = (e) => this.setState({ buscarPor : e.target.value })
 
   buscar = (e) => {
-    const data = {};
-    data[this.state.buscarPor] = this.state.busqueda
+    
+    if(e.target.id == "lucky") {
+      axios.get('http://localhost:8080/recursos/')
+        .then((res) => {
+          this.props.resourcesFound(res.data)
+          this.props.history.push('/searchresult')
+        })
+        .catch(error => {
+          this.props.resourcesFound(error)
+        })
+      } 
+    else {
+      const data = {}
+      data[this.state.buscarPor] = this.state.busqueda
 
-    axios.post('http://localhost:8080/recursos/find', data)
-    .then((res)=>{
-      this.props.resourcesFound(res.data)
-      this.props.history.push('/searchresult')
-    })
-    .catch( error => {
-      this.props.resourcesFound(error)
-    })
+      axios.post('http://localhost:8080/recursos/find', data)
+      .then((res)=>{
+        this.props.resourcesFound(res.data)
+        this.props.history.push('/searchresult')
+      })
+      .catch( error => {
+        this.props.resourcesFound(error)
+      })
+    }
   }
 
   render() {
@@ -63,7 +76,7 @@ class Body extends Component {
             </div>
             <div className="field is-grouped center has-text-centered">
               <a className="button is-medium" style={this.buttonStyle} onClick={this.buscar}>Buscar</a>
-              <a className="button is-medium" style={this.buttonStyle} onClick={this.buscar}>Voy a tener suerte</a>
+              <a id="lucky" className="button is-medium" style={this.buttonStyle} onClick={this.buscar}>Voy a tener suerte</a>
             </div>
           </div>
         </div>

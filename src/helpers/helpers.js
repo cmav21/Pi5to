@@ -1,7 +1,5 @@
 
-export function getResourceFormat(format) {
-  console.log(format);
-  
+export function getResourceFormat(format) {  
   if (format === "COURSE")
     return "fas fa-video"
   if (format === "IMAGE")
@@ -18,5 +16,6 @@ export function getResourceFormat(format) {
     return "fas fa-file-code"
   else if( format === "MEME" )
     return "far fa-grin-squint-tears"
-
+  else 
+    return "fas fa-file"
 }
