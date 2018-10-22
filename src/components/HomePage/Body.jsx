@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { resourcesFound } from '../../actions/UserActions'
 import { withRouter } from 'react-router-dom'
 import Loader from '../common/Loader';
+import API from '../../api'
 
 class Body extends Component {
   state = { busqueda: "", buscarPor: "name", loading: false }
@@ -17,7 +18,7 @@ class Body extends Component {
     this.setState({ loading: true })
     
     if(e.target.id == "lucky") {
-      axios.get('http://localhost:8080/recursos/')
+      axios.get(API + '/recursos/')
         .then((res) => {
           this.props.resourcesFound(res.data)
           this.props.history.push('/searchresult')
@@ -30,7 +31,7 @@ class Body extends Component {
       const data = {}
       data[this.state.buscarPor] = this.state.busqueda
 
-      axios.post('http://localhost:8080/recursos/find', data).
+      axios.post(API + '/recursos/find', data).
       then((res)=>{
         this.props.resourcesFound(res.data)
         this.props.history.push('/searchresult')

@@ -1,7 +1,8 @@
 import React from 'react'
 import 'bulma'
-import './ResourceCard.scss'
-import { getResourceFormat } from "../../helpers/helpers";
+import './Resources.scss'
+import { getResourceFormat } from "../../helpers/helpers"
+import { Link } from 'react-router-dom'
 
 const ResourceCard = ( resource ) => {
   resource = resource.resource
@@ -13,7 +14,9 @@ const ResourceCard = ( resource ) => {
       <div className="card-content">
         <div className="media">
           <div className="media-content">
-            <p className="title is-4 no-padding">{resource.nombre}</p>
+            <Link to={`/resource/${resource.id}`} > 
+              <p className="title is-4 no-padding">{resource.nombre}</p> 
+            </Link>
             <p className="subtitle is-6">Autor: {resource.autor}</p>
             <p className="subtitle is-6">Categoria: {resource.categoria}</p>
           </div>
@@ -26,7 +29,7 @@ const ResourceCard = ( resource ) => {
             </p>
             <span className="tag is-danger is-large likes is-pulled-left">
               <i className="fas fa-heart"></i>
-              <p className="numLikes">{' ' + resource.numLikes}</p>
+              <p className="numLikes">{' ' + resource.numLikes }</p>
             </span>
           </div>
         </div>
