@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 
 const ResourceCard = ( resource ) => {
   resource = resource.resource
-
   const format = getResourceFormat(resource.formato.toUpperCase())
 
   return (<div className="column is-one-third">

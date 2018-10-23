@@ -6,3 +6,10 @@ export function resourcesFound(resources) {
     payload: resources
   }
 }
+
+export function loginSuccess(user){
+  return {
+    type: types.LOGIN,
+    payload: user 
+  }
+}

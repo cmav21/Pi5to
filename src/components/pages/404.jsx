@@ -4,7 +4,7 @@ import './ERROR404.scss'
 const ERROR404 = () => {
   return (
     <div>
-      err
+        
     </div>
   );
 };

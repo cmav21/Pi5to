@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-function LoginHeader(props) {
+const LoginHeader = ( props ) =>  {
   return(
     <div className = {'LoginHeader'}>
       <h1 className = {'text-center'}>

@@ -1,10 +1,31 @@
 import logo from "../../assets/logo5.gif";
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import 'bulma'
 
 
 class TopBar extends Component {
+
+  renderLoginButton = () => {
+    if(this.props.users.userLogged){
+      return (
+        <h1>{this.props.users.userLogged.cuenta}</h1>
+      )
+    } else {
+      return (
+        <Link to="/login" className="button is-dark is-inverted">
+          <span className="icon">
+            <i className="fas fa-user"></i>
+          </span>
+          <span>Iniciar Sesión</span>
+        </Link>
+      )
+    }
+
+  }
+
+
   render() {
     return (
       <div className="hero-head">
@@ -32,12 +53,9 @@ class TopBar extends Component {
                   Repositorios
                 </Link>
                 <span className="navbar-item">
-                  <a className="button is-dark is-inverted">
-                    <span className="icon">
-                      <i className="fas fa-user"></i>
-                    </span>
-                    <span>Iniciar Sesión</span>
-                  </a>
+                  {
+                    this.renderLoginButton()
+                  }
                 </span>
               </div>
             </div>
@@ -48,4 +66,10 @@ class TopBar extends Component {
   }
 }
 
-export default TopBar;
+let TopBar_R = connect( state => ({
+  users: state.users
+}),{
+
+})(TopBar)
+
+export default withRouter(TopBar_R);
