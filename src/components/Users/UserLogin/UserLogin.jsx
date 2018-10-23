@@ -8,7 +8,7 @@ import { loginSuccess } from '../../../actions/UserActions'
 
 
 class UserLogin extends Component {
-  state  = { account: "", password : "" }
+  state = { account: "", password: "", loginStatus: "", loginButtonText: "Iniciar sesión" }
 
   handleAccount = e => this.setState({ account: e.target.value })
   handlePassword = e => this.setState({ password: e.target.value })
@@ -21,17 +21,21 @@ class UserLogin extends Component {
       'password': this.state.password.toString()
     }
 
+    this.setState({ loginStatus: "loading", loginButtonText: "Cargando ..."})
+
     axios.post(`${API}/usuarios/${this.state.account}/login/`, data)
     .then(res => {
       const student = res.data
-
       if(student.cuenta.toString() ===  this.state.account){
-        console.log("you're in")
         this.props.loginSuccess(student)
-        this.props.history.push("/")
-      }
-      
+        this.setState({ loginStatus: "loading ok", loginButtonText: "¡Te extrañabamos!"})
+        setTimeout(() => {
+          this.props.history.push("/")
+        }, 10000);
+      } else {
+        this.setState({ loginStatus: "loading notok", loginButtonText: "¡Parece que olvidaste tu!"})
 
+      }
     })
     .catch(e => { console.log(e) })
   }
@@ -40,7 +44,7 @@ class UserLogin extends Component {
     return (
       <div className="login_body">
         <div className="wrapper">
-          <form className="login">
+          <form className={"login " + this.state.loginStatus}>
             <p className="title">¡Bienvenido!</p>
             <input type="text" placeholder="Numero de cuenta" autoFocus onChange={this.handleAccount}/>
             <i className="fa fa-user"></i>
@@ -49,7 +53,7 @@ class UserLogin extends Component {
             <Link to="/" href="#">Olvidaste tu contraseña?</Link>
             <button onClick={this.login}>
               <i className="spinner"></i>
-              <span className="state">Log in</span>
+              <span className="state">{ this.state.loginButtonText }</span>
             </button>
           </form>
         </div>

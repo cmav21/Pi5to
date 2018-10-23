@@ -71,6 +71,21 @@ $primary: rgb(21, 67, 104);
     }
   }
 
+  &.notok {
+    button {
+      background-color: #e63939;
+
+      .spinner {
+        border-radius: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        height: 20px;
+        animation: none;
+        transform: rotateZ(-45deg);
+      }
+    }
+  }
+
   input {
     display: block;
     padding: 15px 10px;

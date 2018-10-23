@@ -6,11 +6,42 @@ import 'bulma'
 
 
 class TopBar extends Component {
+  styles = {
+    icon: { position: "relative",
+            top: -24 }
+  }
+  
 
   renderLoginButton = () => {
-    if(this.props.users.userLogged){
+    const user = this.props.users.userLogged
+    if(user){
       return (
-        <h1>{this.props.users.userLogged.cuenta}</h1>
+        <div className="dropdown is-hoverable is-right">
+          <div className="dropdown-trigger">
+            <Link to="/" aria-haspopup="true" aria-controls="dropdown-menu4">
+              <span className="icon is-small">
+                <i className="fas fa-user"></i>
+              </span>
+              {' '}
+              <span>{ user.nombre}</span>
+            </Link>
+          </div>
+          <div className="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div className="dropdown-content">
+              <div className="dropdown-item">
+                <h1>Cuenta: {user.cuenta}</h1>
+              </div>
+              <hr className="dropdown-divider"/>
+              <div className="dropdown-item">
+                <a className="dropdown-item" href="/"> Cerrar Sesión </a>
+                {'  '}
+                <span className="icon is-small is-pulled-right">
+                  <i className="fas fa-sign-out-alt" style={ this.styles.icon }></i>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       )
     } else {
       return (
