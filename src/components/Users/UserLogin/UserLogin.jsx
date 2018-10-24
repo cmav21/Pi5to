@@ -8,7 +8,7 @@ import { loginSuccess } from '../../../actions/UserActions'
 
 
 class UserLogin extends Component {
-  state = { account: "", password: "", loginStatus: "", loginButtonText: "Iniciar sesión" }
+  state = { account: "", password: "", loginStatus: "", loginButtonText: "Iniciar sesión", spinner:"spinner" }
 
   handleAccount = e => this.setState({ account: e.target.value })
   handlePassword = e => this.setState({ password: e.target.value })
@@ -21,7 +21,7 @@ class UserLogin extends Component {
       'password': this.state.password.toString()
     }
 
-    this.setState({ loginStatus: "loading", loginButtonText: "Cargando ..."})
+    this.setState({ loginStatus: "loading", loginButtonText: "Cargando ...", spinner: "spinner"})
 
     axios.post(`${API}/usuarios/${this.state.account}/login/`, data)
     .then(res => {
@@ -37,7 +37,12 @@ class UserLogin extends Component {
 
       }
     })
-    .catch(e => { console.log(e) })
+    .catch(e => { 
+      this.setState({ 
+        loginStatus: "loading notok", 
+        loginButtonText: "Ha ocurrido un error, vuelve a intentarlo más tarde",
+        spinner: "fas fa-times error"})
+     })
   }
 
   render() {
@@ -52,7 +57,7 @@ class UserLogin extends Component {
             <i className="fa fa-key"></i>
             <Link to="/" href="#">Olvidaste tu contraseña?</Link>
             <button onClick={this.login}>
-              <i className="spinner"></i>
+              <i className={this.state.spinner}></i>
               <span className="state">{ this.state.loginButtonText }</span>
             </button>
           </form>
