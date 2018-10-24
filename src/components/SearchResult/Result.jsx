@@ -16,11 +16,13 @@ class Result extends Component {
     return (
       <div className="hero-body">
         <div className="container">
-          <h1 className="title is-1">Resultados</h1>
-          <div className="row columns is-multiline">
-          {
-            this.renderCards()
-          }
+          <div className="columns is-multiline">
+            <h1 className="title is-1">Resultados</h1>
+            <div className="row columns is-multiline">
+            {
+              this.renderCards()
+            }
+            </div>
           </div>
         </div>
       </div>

@@ -52,7 +52,7 @@ class Body extends Component {
     return (
       <div className="hero-body">
         <div className="container has-text-centered">
-          <div className="column is-6 is-offset-3">
+          <div className="column is-6">
             <h1 className="title">
               ¿Qué aprenderás hoy?
               </h1>

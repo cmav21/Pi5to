@@ -1,0 +1,85 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,600);
+
+.commentSpan {
+  float: right;
+  margin-right: 10px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.commentHR {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.commentBoxContainer {
+  width: 85%;
+  background: #fff;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  .commentP {
+    margin: 0 30px 15px;
+    font-weight: 300;
+    color: #333;
+    word-wrap: break-word;
+    background: #EEE;
+    padding: 5px 10px;
+  }
+}
+
+.commentHeader {
+  margin: 15px 20px;
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.commentForm {
+  margin: 10px 10px 30px 10px;
+}
+.commentForm ::-webkit-input-placeholder {
+  color: #CCC;
+  font-weight: 300;
+}
+
+.commentInput[type="text"], .commentTextarea {
+  margin: 5px 10px;
+  outline: none;
+  background: #efefef;
+  border: 0;
+  padding: 10px;
+}
+
+.commentTextarea {
+  resize: none;
+  width: 85%;
+}
+
+.commentInput[type="text"] {
+  width: 50%;
+  margin-bottom: 15px;
+}
+
+.commentButton {
+  font-weight: 400;
+  margin: 12px 0 0 10px;
+  border: 0;
+  color: #fff;
+  font-size: 15px;
+  background: #D3775D;
+  padding: 12px 20px 12px 20px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.commentButton:hover {
+  background: #C15322;
+}
