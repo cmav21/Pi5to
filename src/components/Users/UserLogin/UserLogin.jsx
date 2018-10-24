@@ -31,7 +31,7 @@ class UserLogin extends Component {
         this.setState({ loginStatus: "loading ok", loginButtonText: "¡Te extrañabamos!"})
         setTimeout(() => {
           this.props.history.push("/")
-        }, 10000);
+        }, 1000);
       } else {
         this.setState({ loginStatus: "loading notok", loginButtonText: "¡Parece que olvidaste tu!"})
 

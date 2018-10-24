@@ -7,6 +7,10 @@ import reducers from './reducers/index'
 import { applyMiddleware, createStore } from 'redux'
 import * as serviceWorker from './serviceWorker'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import moment from "moment"
+import 'moment/locale/es'
+
+moment.locale('es')
 
 const createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
 
