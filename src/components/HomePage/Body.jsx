@@ -4,18 +4,21 @@ import axios from 'axios';
 import { connect } from 'react-redux'
 import { resourcesFound } from '../../actions/UserActions'
 import { withRouter } from 'react-router-dom'
+import Loader from '../common/Loader';
+import API from '../../api'
 
 class Body extends Component {
-  state = { busqueda: "", buscarPor: "name" }
+  state = { busqueda: "", buscarPor: "name", loading: false }
   buttonStyle = { width: "45%", marginRight: "5%" }
   
   handleBusqueda = (e) => this.setState({ busqueda: e.target.value})
   handleBuscarPor = (e) => this.setState({ buscarPor : e.target.value })
 
   buscar = (e) => {
+    this.setState({ loading: true })
     
     if(e.target.id == "lucky") {
-      axios.get('http://localhost:8080/recursos/')
+      axios.get(API + '/recursos/')
         .then((res) => {
           this.props.resourcesFound(res.data)
           this.props.history.push('/searchresult')
@@ -28,18 +31,24 @@ class Body extends Component {
       const data = {}
       data[this.state.buscarPor] = this.state.busqueda
 
-      axios.post('http://localhost:8080/recursos/find', data)
-      .then((res)=>{
+      axios.post(API + '/recursos/find', data).
+      then((res)=>{
         this.props.resourcesFound(res.data)
         this.props.history.push('/searchresult')
+        this.setState({ loading: false })
       })
       .catch( error => {
         this.props.resourcesFound(error)
+        this.setState({ loading: false })
       })
     }
   }
 
   render() {
+    if(this.state.loading){
+      return <Loader/>
+    }
+
     return (
       <div className="hero-body">
         <div className="container has-text-centered">

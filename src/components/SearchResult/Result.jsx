@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ResourceCard from "../Resources/ResourceCard"
 import { connect } from "react-redux"
 
+
 class Result extends Component {
 
   renderCards = () => {
@@ -9,7 +10,6 @@ class Result extends Component {
     return  this.props.users.resourcesFound.map((r, i) => {
           return <ResourceCard resource={r} key={i} /> 
         })
-      
   }
 
   render() {
