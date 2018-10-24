@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ResourceCard from "../Resources/ResourceCard"
 import { connect } from "react-redux"
+import { getResource } from '../../actions/UserActions'
 
 
 class Result extends Component {
@@ -8,7 +9,7 @@ class Result extends Component {
   renderCards = () => {
     if(this.props.users.resourcesFound)
     return  this.props.users.resourcesFound.map((r, i) => {
-          return <ResourceCard resource={r} key={i} /> 
+          return <ResourceCard resource={r} key={i} getRsc={this.goForResource}/> 
         })
   }
 
@@ -33,6 +34,6 @@ class Result extends Component {
 let ResultComponent = Result
 ResultComponent = connect(state => ({
   users: state.users
-}), {})(Result)
+}), {getResource})(Result)
 
 export default ResultComponent;

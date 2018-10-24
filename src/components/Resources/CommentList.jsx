@@ -37,7 +37,7 @@ const Comment = (props) => {
   return (
     <div>
       <hr className="commentHR"/>
-      <h4 className="title is-6" style={{ marginBottom: 5 }}>{comment.usuario.nombre}<span className="is-pulled-right">{moment(comment.fechaPublicacion).lang("es").format('LLLL')}</span></h4>
+      <h4 className="title is-6" style={{ marginBottom: 5 }}>{comment.usuario.nombre}<span className="is-pulled-right">{moment(comment.fechaPublicacion).format('LLLL')}</span></h4>
       <p className="commentP">{comment.contenido}</p>
     </div>
   )

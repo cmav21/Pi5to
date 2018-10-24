@@ -6,13 +6,13 @@ class Description extends Component {
   style = {
     heroStyle : { alignItems : "flex-start"},
     box: { paddingLeft: "10vw" }
-  }
+  };
 
   render() {
-    const { resource } = this.props
+    const { resource } = this.props;
 
     if(!resource)
-      return (<h1 className=""> Ha ocurrido un error </h1>)
+      return (<h1 className=""> Ha ocurrido un error </h1>);
     else {
       return (
         <div className=" hero-body columns is-multiline" style={this.style.heroStyle}>
@@ -25,7 +25,7 @@ class Description extends Component {
               <div className="stats is-pulled-right">
                 <div className="columns">
                   <div className="column c icon has-text-danger">
-                    <i className="icons fas fa-heart"></i>
+                    <i className="icons fas fa-heart"/>
                   </div>
                   <div className="column c">
                     <p className="nums">{ resource.numLikes }</p>
@@ -33,7 +33,7 @@ class Description extends Component {
                   </div>
                   <div className="columns">
                   <div className="column c icon has-text-info">
-                    <i className="icons fas fa-eye"></i>
+                    <i className="icons fas fa-eye"/>
                   </div>
                   <div className="column c">
                     <p className="nums">{resource.numConsultas }</p>

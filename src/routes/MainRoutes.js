@@ -9,6 +9,8 @@ import ResourceDescription from '../components/Resources/ResourceDescription';
 import ERROR404 from '../components/pages/404';
 import UserLogin from '../components/Users/UserLogin/UserLogin';
 
+import axios from 'axios'
+import API from '../api'
 
 const MainRoutes = () => {
   return(

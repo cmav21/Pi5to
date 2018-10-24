@@ -1,34 +1,34 @@
 import React, { Component } from 'react'
 import TopBar from '../HomePage/TopBar'
 import Description from './Description'
-import axios from 'axios'
-import API from '../../api'
 import { withRouter } from 'react-router-dom'
-import CommentBox from './CommentBox';
-
+import CommentBox from './CommentBox'
+import { getResource } from '../../actions/UserActions'
+import { connect } from 'react-redux'
 
 class ResourceDescription extends Component {
-  state = { resource: {} }
 
-  componentDidMount() {
-    axios.get(API + `/recursos/${this.props.match.params.id}`)
-      .catch(error => {
-        console.log(error)
-      })
-      .then(res => {
-        this.setState({ resource: res.data })
-      })
+  componentDidMount(){
+      this.props.getResource(this.props.match.params.id);
   }
-  
+
   render() {
+    const resource = this.props.users.resource ? this.props.users.resource : {};
+
     return (
       <div className="hero is-light is-fullheight">
         <TopBar />
-        <Description resource={this.state.resource}/>
-        <CommentBox comments={this.state.resource.comentarios}/>
+        <Description resource={resource}/>
+        <CommentBox comments={resource.comentarios}/>
       </div>
     );
   }
 }
 
-export default withRouter(ResourceDescription);
+const ResourceView = connect(state => ({
+    users: state.users
+}),{
+    getResource
+})(ResourceDescription);
+
+export default withRouter(ResourceView);
