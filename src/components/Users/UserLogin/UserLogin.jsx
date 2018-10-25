@@ -30,7 +30,7 @@ class UserLogin extends Component {
         this.props.loginSuccess(student)
         this.setState({ loginStatus: "loading ok", loginButtonText: "¡Te extrañabamos!"})
         setTimeout(() => {
-          this.props.history.push("/")
+          this.props.history.goBack();
         }, 1000);
       } else {
         this.setState({ loginStatus: "loading notok", loginButtonText: "¡Parece que olvidaste tu!"})
