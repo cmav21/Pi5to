@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import { isNull } from 'util';
 import axios from 'axios'
-import API from '../../../api'
 
 class ResouceForm extends Component {
 
