@@ -16,6 +16,7 @@ class UserLogin extends Component {
   login = (e) => {
     e.preventDefault();
 
+
     const data = {
       'cuenta': this.state.account.toString(),
       'password': this.state.password.toString()
@@ -62,7 +63,6 @@ class UserLogin extends Component {
             </button>
             <Link to={"/signup"}>
               <button className={"signup"}>
-                <i className={this.state.spinner}/>
                 <span className="state">Registrarse</span>
               </button>
             </Link>

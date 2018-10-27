@@ -23,7 +23,7 @@ class Description extends Component {
       console.log(res);
       
       if(res.data !== "")
-        this.props.updateResource(res)
+        this.props.updateResource(res);
       else 
       // TODO: create alert that you have to be logged
       alert("you have to be logged")

@@ -45,7 +45,7 @@ $primary: rgb(21, 67, 104);
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 
   &.loading {
-    button {
+    .boton {
       max-height: 100%;
       padding-top: 50px;
 
@@ -219,20 +219,4 @@ $primary: rgb(21, 67, 104);
   }
 
 
-}
-
-footer {
-  display: block;
-  padding-top: 50px;
-  text-align: center;
-  color: #ddd;
-  font-weight: normal;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-  font-size: 0.8em;
-
-  a,
-  a:link {
-    color: #fff;
-    text-decoration: none;
-  }
 }
