@@ -3,6 +3,8 @@ import 'bulma'
 import './Resources.scss'
 import { getResourceFormat } from "../../helpers/helpers"
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import API from '../../api'
 
 const ResourceCard = ( resource ) => {
   resource = resource.resource;
@@ -30,6 +32,8 @@ const ResourceCard = ( resource ) => {
               <i className="fas fa-heart"/>
               <p className="numLikes">{' ' + resource.numLikes }</p>
             </span>
+            <a class="button is-info is-outlined">ver recurso</a>
+            <a class="button is-danger is-outlined">Eliminar recurso</a>
           </div>
         </div>
       </div>

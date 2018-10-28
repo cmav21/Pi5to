@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import { isNull } from 'util';
 import axios from 'axios'
+import API from '../../api';
+import { stringify } from 'querystring';
 
 class ResouceForm extends Component {
 
@@ -34,11 +36,48 @@ class ResouceForm extends Component {
                 edicion: edicion,
                 etiquetas: etiquetas,
                 descripcion : descripcion
-            });
+            });   
+            const data = JSON.stringify({
+                categoria: this.state.categoria,
+                formato:this.state.formato,
+                nombre:this.state.nombre,
+                autor:this.state.autor,
+                edicion:this.state.edicion,
+                descripcion: this.state.descripcion
+                }
+                );
+    
+                axios.post(`${API}/recursos/`, {data}   ).then( 
+                    res => {console.log(res);
+                            console.log(res.data)}
+                //     <article class="message is-success">
+                //     <div class="message-header">
+                //       <p>Success</p>
+                //       <button class="delete" aria-label="delete"></button>
+                //     </div>
+                //   </article>
+                ).catch( e=> {
+                    this.setState({       
+                        nombre: "",
+                        autor: "",
+                        categoria:"",
+                        formato: "",
+                        edicion:"",
+                        etiquetas:"",
+                        descripcion:""
+                    });
+                    console.log("No pudo subirse el archivo");
+                })
+                    // <article class="message is-danger">
+                    //   <div class="message-header">
+                    //     <p>Danger</p>
+                    //     <button class="delete" aria-label="delete"></button>
+                    //   </div>
+                    // </article>         
+        }
     }
-}
+
     render() {
-        console.log(this.state);
         return(
             <div className="columns">
                 <div className = "column is-three-quarters is-half is-offset-one-quarter">
