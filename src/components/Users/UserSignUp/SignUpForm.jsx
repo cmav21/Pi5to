@@ -83,8 +83,6 @@ class SignUpForm extends Component {
       return;
     }
 
-
-
     axios.post(`${API}/usuarios/`, data)
       .then(res => {
         if(res.data.nombre === data.name){
