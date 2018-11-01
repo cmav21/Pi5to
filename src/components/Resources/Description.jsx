@@ -1,12 +1,39 @@
 import React, { Component } from 'react'
 import "bulma"
 import './Resources.scss'
+import axios from 'axios'
+import API from "../../api"
+import { connect } from 'react-redux'
+import { updateResource } from '../../actions/UserActions'
 
 class Description extends Component {
   style = {
     heroStyle : { alignItems : "flex-start"},
     box: { paddingLeft: "10vw" }
   };
+
+  giveLike = () => {
+
+    const data = {}
+    if(this.props.users.userLogged)
+      data['userId'] = this.props.users.userLogged.id
+
+    axios.put(`${API}/recursos/${this.props.resource.id}/like`, data)
+    .then(res => {
+      console.log(res);
+      
+      if(res.data !== "")
+        this.props.updateResource(res);
+      else 
+      // TODO: create alert that you have to be logged
+      alert("you have to be logged")
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+  }
+
 
   render() {
     const { resource } = this.props;
@@ -25,7 +52,7 @@ class Description extends Component {
               <div className="stats is-pulled-right">
                 <div className="columns">
                   <div className="column c icon has-text-danger">
-                    <i className="icons fas fa-heart"/>
+                    <i className="icons fas fa-heart" onClick={this.giveLike}/>
                   </div>
                   <div className="column c">
                     <p className="nums">{ resource.numLikes }</p>
@@ -60,4 +87,10 @@ class Description extends Component {
   }
 }
 
-export default Description;
+const Descripcion = connect(state => ({
+  users: state.users
+}),{
+  updateResource
+})(Description);
+
+export default Descripcion;

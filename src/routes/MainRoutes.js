@@ -12,6 +12,7 @@ import AddResource from '../components/Resources/AddResource';
 
 import axios from 'axios'
 import API from '../api'
+import UserSignUp from "../components/Users/UserSignUp/UserSignUp";
 
 const MainRoutes = () => {
   return(
@@ -20,6 +21,7 @@ const MainRoutes = () => {
         <Route exact path='/' component={HomePage}/>
         <Route exact path='/about' component={About}/>
         <Route exact path='/login' component={UserLogin}/>
+        <Route exact path='/signup' component={UserSignUp}/>
         <Route exact path='/searchresult' component={SearchResult}/>
         <Route exact path='/resource/:id' component={ResourceDescription} />
         <Route exact path='/addresource' component={AddResource}/>
