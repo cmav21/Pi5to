@@ -4,6 +4,7 @@ import SignUpForm from './SignUpForm'
 
 
 class UserSignUp extends Component {
+
   render() {
     return (
       <div className={"booty"}>

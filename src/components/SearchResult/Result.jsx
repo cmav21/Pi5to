@@ -11,7 +11,7 @@ class Result extends Component {
     return  this.props.users.resourcesFound.map((r, i) => {
           return <ResourceCard resource={r} key={i} getRsc={this.goForResource}/> 
         })
-  }
+  };
 
   render() {
     return (

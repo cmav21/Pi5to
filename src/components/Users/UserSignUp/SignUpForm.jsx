@@ -216,10 +216,10 @@ class SignUpForm extends Component {
 
         <div className="field is-grouped" style={{marginTop: 20}}>
           <div className="control">
-            <button className="button is-link" onClick={this.upload}>Submit</button>
+            <button className="button is-link" onClick={this.upload}>Registrarse</button>
           </div>
           <div className="control">
-            <button className="button is-text" onClick={this.handleCancel}>Cancel</button>
+            <button className="button is-text" onClick={this.handleCancel}>Cancelar</button>
           </div>
         </div>
       </div>
