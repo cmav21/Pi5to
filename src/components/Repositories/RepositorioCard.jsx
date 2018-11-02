@@ -17,8 +17,8 @@ class RepositorioCard extends Component {
           {
             this.props.users.userLogged ?
               <div className="card__action-bar">
-                <button className="card__button" onClick={()=>alert("hi")}>SHARE</button>
-                <button className="card__button">LEARN MORE</button>
+                <button className="card__button">Editar</button>
+                <button className="card__button">Eliminar</button>
               </div>:
               <div/>
           }
