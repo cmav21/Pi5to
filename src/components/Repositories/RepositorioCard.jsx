@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './RepositorioCard.scss'
 import { connect } from 'react-redux'
 import {loginSuccess} from "../../actions/UserActions";
+import modalImagePicker from "../../assets/modalImagePicker";
 
 class RepositorioCard extends Component {
   render() {
@@ -10,7 +11,7 @@ class RepositorioCard extends Component {
               : "card card--big cv";
     return (
         <div className={c}>
-          <div className="card__image" style={{backgroundImage: `url(${"https://images.unsplash.com/photo-1541102387691-6c263a16c763?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4a6de9ebb8419913f2af116925ea1815&auto=format&fit=crop&w=889&q=80"})`}}/>
+          <div className="card__image" style={{backgroundImage: `url(${modalImagePicker()})`}}/>
           <h2 className="card__title">{this.props.repo.nombre}</h2><span
           className="card__subtitle">By ... </span>
           <p className="card__text">{this.props.repo.descripcion}</p>
