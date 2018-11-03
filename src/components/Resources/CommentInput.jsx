@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import axios from 'axios';
 import API from '../../api'
 import { updateResource } from "../../actions/UserActions";
 
 
 class CommentInput extends Component {
-  state = { comment: "" }
+  state = { comment: "" };
 
-  handleComment = e => this.setState({ comment: e.target.value })
+  handleComment = e => this.setState({ comment: e.target.value });
 
   uploadComment = () => {
     const data = {
@@ -37,7 +37,7 @@ class CommentInput extends Component {
         </div>
       );
     }
-    return <div> ¡Inicia sesión para realizar un comentario! </div>
+    return <div> ¡<Link to={'/signup'} style={{color:"blue"}}>Inicia sesión </Link> para realizar un comentario! </div>
   }
 }
 

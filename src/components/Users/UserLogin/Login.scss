@@ -45,7 +45,7 @@ $primary: rgb(21, 67, 104);
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 
   &.loading {
-    button {
+    .boton {
       max-height: 100%;
       padding-top: 50px;
 
@@ -57,7 +57,7 @@ $primary: rgb(21, 67, 104);
   }
 
   &.ok {
-    button {
+    .boton {
       background-color: #8bc34a;
 
       .spinner {
@@ -72,7 +72,7 @@ $primary: rgb(21, 67, 104);
   }
 
   &.notok {
-    button {
+    .boton {
       background-color: #e63939;
 
       .spinner {
@@ -136,7 +136,7 @@ $primary: rgb(21, 67, 104);
     padding-bottom: 20px;
   }
 
-  button {
+  .boton {
     width: 100%;
     height: 100%;
     padding: 10px 10px;
@@ -189,6 +189,27 @@ $primary: rgb(21, 67, 104);
 
   }
 
+  .signup{
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px;
+    background: #00CE60;
+    color: #000000;
+    display: block;
+    border: none;
+    margin-top: 20px;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    max-height: 60px;
+    border: 0px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 2px 2px;
+    transform: rotateZ(0deg);
+
+    transition: all 0.1s ease-out;
+    border-bottom-width: 7px;
+  }
+
   &:not(.loading) button:hover {
     box-shadow: 0px 1px 3px $primary;
   }
@@ -198,20 +219,4 @@ $primary: rgb(21, 67, 104);
   }
 
 
-}
-
-footer {
-  display: block;
-  padding-top: 50px;
-  text-align: center;
-  color: #ddd;
-  font-weight: normal;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-  font-size: 0.8em;
-
-  a,
-  a:link {
-    color: #fff;
-    text-decoration: none;
-  }
 }
