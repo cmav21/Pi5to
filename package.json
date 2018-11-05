@@ -16,7 +16,8 @@
     "react-scripts": "2.0.4",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.0.2"
+    "styled-components": "^4.0.2",
+    "redux-devtools-extension": "^2.13.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,8 +30,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "devDependencies": {
-    "redux-devtools-extension": "^2.13.5"
-  }
+  ]
 }
