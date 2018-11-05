@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e3a29056-0a67-4cb2-a494-171a85292468" name="Default Changelist" comment="Creating the comment box, rendering them in list with the author, the content and the date when they were created, also was made the box and coditions when you can comment and not">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Confirmation.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Confirmation.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Repositories/List.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Repositories/List.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Repositories/RepositorioCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Repositories/RepositorioCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchResult/SearchResult.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchResult/SearchResult.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="e3a29056-0a67-4cb2-a494-171a85292468" name="Default Changelist" comment="Creating the comment box, rendering them in list with the author, the content and the date when they were created, also was made the box and coditions when you can comment and not" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +81,7 @@
     <session id="150721217">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.45" value="1" />
           <entry key="project.opened" value="2" />
@@ -514,7 +507,7 @@
       <workItem from="1541024014406" duration="2492000" />
       <workItem from="1541035417560" duration="754000" />
       <workItem from="1541175722605" duration="19060000" />
-      <workItem from="1541221140279" duration="3622000" />
+      <workItem from="1541221140279" duration="3745000" />
     </task>
     <task id="LOCAL-00001" summary="Creating the comment box, rendering them in list with the author, the content and the date when they were created, also was made the box and coditions when you can comment and not">
       <created>1540418712452</created>
@@ -534,7 +527,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60860000" />
+    <option name="totallyTimeSpent" value="60983000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -547,7 +540,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22108346" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
