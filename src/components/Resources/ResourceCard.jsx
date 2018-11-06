@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import API from '../../api'
 
-const Card = styled.div`
+export const Card = styled.div`
   opacity: 0.7;
 
   &:hover{

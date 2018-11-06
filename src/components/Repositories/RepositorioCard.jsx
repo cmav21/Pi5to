@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './RepositorioCard.scss'
 import { connect } from 'react-redux'
 import {loginSuccess} from "../../actions/UserActions";
+import { Card as CardWrapper } from '../Resources/ResourceCard'
 import { Link } from 'react-router-dom'
 import modalImagePicker from "../../assets/modalImagePicker";
 import API from '../../api'
@@ -22,7 +23,7 @@ class RepositorioCard extends Component {
                 this.props.users.userLogged.tipo === "MANAGER" ? "card card--big" : "card card--big cv"
               : "card card--big cv";
     return (
-        <div className={c}>
+        <CardWrapper className={c}>
           <div className="card__image" style={{backgroundImage: `url(${modalImagePicker()})`}}/>
           <h2 className="card__title">{this.props.repo.nombre}</h2><span
           className="card__subtitle">By ... </span>
@@ -38,7 +39,7 @@ class RepositorioCard extends Component {
               </div>:
               <div/>
           }
-        </div>
+        </CardWrapper>
     );
   }
 }
