@@ -1,0 +1,202 @@
+// ----------------
+// Variables
+// ----------------
+$bg: #575757;
+$btn-color : #d65a57;
+$btn-gray : #9c9c9c;
+$btn-gray-drk : #787878;
+
+
+// ----------------
+// Base
+// ----------------
+
+.pen-wrapper {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 85px);
+  min-height: 500px;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+
+  @media screen and ( min-width: 768px) {
+    flex-direction: row;
+  }
+}
+.pen-title {
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+  padding: 20px 0;
+
+  a {
+    text-decoration: underline;
+    font-size: .75em;
+    cursor: pointer;
+  }
+}
+
+
+// ----------------
+// Buttons
+// ----------------
+.buton-cover {
+  position: relative;
+}
+
+.btn {
+  display: block;
+  min-width: 120px;
+  border: none;
+  padding: 0 1em;
+  font-size: 12px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+  background: none;
+  transition: background .3s ease;
+}
+.btn--primary {
+  background-color: $btn-color;
+  &:hover {
+    background-color: lighten($btn-color, 5%);
+  }
+}
+.btn--gray {
+  background-color: $btn-gray;
+  &:hover {
+    background-color: darken($btn-gray, 5%);
+  }
+}
+.btn--gray-drk {
+  background-color: $btn-gray-drk;
+  &:hover {
+    background-color: darken($btn-gray-drk, 5%);
+  }
+}
+
+// Buttons variations
+.btn__txt--inactive {
+  display: block;
+  .is_active & {
+    display: none;
+  }
+}
+.btn__txt--active {
+  display: none;
+  .is_active & {
+    display: block;
+  }
+}
+.button-set {
+  display: flex;
+  margin-top: 1px;
+
+  .btn {
+    display: block;
+    min-width: initial;
+    width: 50%;
+    padding: 0;
+  }
+}
+
+
+// -------------------
+// 3D dropdown button
+// -------------------
+.button-3d {
+  perspective: 200px;
+
+  &.is_active {
+    & > .btn {
+      background-color: $btn-gray;
+    }
+  }
+}
+.button-3d__dropdown {
+  overflow: hidden;
+  transition: all 1s ease;
+  transform: rotateX(-91deg);
+  transform-origin: top;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+
+  .is_active & {
+    transform: rotateX(0deg);
+  }
+  .btn {
+    background-color: #b24a48;
+    transition: background-color 1s linear;
+    .is_active & {
+      background-color: $btn-color;
+    }
+  }
+  .btn--gray {
+    background-color: #7f7f7f;
+    .is_active & {
+      background-color: $btn-gray;
+    }
+  }
+}
+
+
+// -------------------
+// slide out
+// -------------------
+.button-slide-out {
+  position: relative;
+}
+.button-slide-out__middle {
+  position: relative;
+  z-index: 10;
+}
+.button-slide-out__above,
+.button-slide-out__below {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  transition: transform .5s ease;
+}
+
+.button-slide-out__above {
+  @extend .btn;
+  font-size: 14px;
+  .is_active & {
+    transform: translateY(-100%)
+  }
+}
+.button-slide-out__below {
+  .is_active & {
+    transform: translateY(100%)
+  }
+}
+
+
+
+// -------------------
+// slide up
+// -------------------
+.button-slide-up {
+  position: relative;
+  overflow: hidden;
+  min-width: 120px;
+
+  .button-set {
+    margin-top: 0;
+  }
+}
+.button-slide-up__button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform .5s ease;
+  .is_active & {
+    transform: translateY(-100%)
+  }
+}
+

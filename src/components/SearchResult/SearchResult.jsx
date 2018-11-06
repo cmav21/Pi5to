@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TopBar from '../HomePage/TopBar'
 import Result from './Result'
 
+
 class SearchResult extends Component {
   render() {
     return (

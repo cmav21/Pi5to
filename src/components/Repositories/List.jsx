@@ -4,6 +4,7 @@ import API from '../../api'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import CreateRepo from "./CreateRepo";
+import Confirmation from "../common/Confirmation";
 
 
 class List extends Component {
@@ -45,7 +46,7 @@ class List extends Component {
         <div className={"columns is-multiline"} style={{justifyContent: "center"}}>
           {
             this.state.cards.map((card, i) => {
-              return <RepositorioCard repo={card} key={i}/>
+              return <RepositorioCard repo={card} key={i} fetchRepos={this.fetchRepos}/>
             })
           }
         </div>

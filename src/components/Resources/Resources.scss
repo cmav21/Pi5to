@@ -1,5 +1,12 @@
+.rsc_title {
+  position: inherit;
+  top: -76px;
+}
+
 .likes{
-  margin-top: 1vw;
+    top: 155px;
+    left: 25px;
+    position: relative;
 
   .numLikes {
     position: relative;
@@ -10,9 +17,9 @@
 
 
 .formatoIcon {
-  margin-top: 10px;
-  opacity: 0.2;
-  font-size: 5em;
+  margin-top: 44px;
+  margin-right: 10px;
+  font-size: 2em;
 }
 
 

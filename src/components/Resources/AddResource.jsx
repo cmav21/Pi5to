@@ -4,7 +4,7 @@ import Form from './ResourceForm';
 class AddResource extends Component {
     render() {
         return(
-            <div>
+            <div className="hero is-light is-fullheight">
                 <TopBar/>
                 <Form />
             </div>
