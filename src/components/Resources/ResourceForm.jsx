@@ -3,6 +3,7 @@ import { isNull } from 'util';
 import axios from 'axios'
 import API from '../../api';
 import { stringify } from 'querystring';
+import '../../estilos.css'
 
 class ResouceForm extends Component {
 
@@ -35,7 +36,8 @@ class ResouceForm extends Component {
                 'nombre':this.state.nombre,
                 'autor':this.state.autor,
                 'edicion':this.state.edicion,
-                'descripcion': this.state.descripcion
+                'descripcion': this.state.descripcion,
+                'etiquetas': this.state.etiquetas
                 }
     
                 axios.post(`${API}/recursos/`, data).then( 
@@ -48,16 +50,8 @@ class ResouceForm extends Component {
                 //     </div>
                 //   </article>
                 ).catch( e=> {
-                    this.setState({       
-                        nombre: "",
-                        autor: "",
-                        categoria:"",
-                        formato: "",
-                        edicion:"",
-                        etiquetas:"",
-                        descripcion:""
-                    });
                     console.log("No pudo subirse el archivo");
+                    console.log(data);
                 })
                     // <article class="message is-danger">
                     //   <div class="message-header">
@@ -71,27 +65,27 @@ class ResouceForm extends Component {
 
     render() {
         return(
-            <div className="columns">
+            <div className="columns prueba">
                 <div className = "column is-three-quarters is-half is-offset-one-quarter">
                     <h1 className="title">
                         Registrar recurso
                     </h1>
-                    <div class="field">
-                        <label class="label">Nombre</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleNombre} type="text" id="nombre" placeholder="Nombre"/>
+                    <div className="field">
+                        <label className="label">Nombre</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleNombre} type="text" id="nombre" placeholder="Nombre"/>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Autor</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleAutor} type="text" id="autor" placeholder="Autor"/>
+                    <div className="field">
+                        <label className="label">Autor</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleAutor} type="text" id="autor" placeholder="Autor"/>
                         </div>
                     </div>
-                    <div class="field">
-                      <label class="label">Categoria</label>
-                      <div class="control">
-                        <div class="select">
+                    <div className="field">
+                      <label className="label">Categoria</label>
+                      <div className="control">
+                        <div className="select">
                           <select id="categoria" onChange={this.handleCategoria}>
                             <option value=""> </option>
                             <option value="Lirico">Lirico</option>
@@ -101,36 +95,36 @@ class ResouceForm extends Component {
                         </div>
                       </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Formato</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleFormato} type="text" id="formato" placeholder="Formato"/>
+                    <div className="field">
+                        <label className="label">Formato</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleFormato} type="text" id="formato" placeholder="Formato"/>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Edicion</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleEdicion} type="text" id="edicion" placeholder="Edicion"/>
+                    <div className="field">
+                        <label className="label">Edicion</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleEdicion} type="text" id="edicion" placeholder="Edicion"/>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Etiquetas</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleEtiquetas} type="text" id="etiquetas" placeholder="Etiquetas"/>
+                    <div className="field">
+                        <label className="label">Etiquetas</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleEtiquetas} type="text" id="etiquetas" placeholder="Etiquetas"/>
                         </div>
                     </div>
-                    <div class="field">
-                      <label class="label">Descripcion</label>
-                      <div class="control">
-                        <textarea class="textarea" onChange = {this.handleDescripcion} id="descripcion" placeholder="Textarea"></textarea>
+                    <div className="field">
+                      <label className="label">Descripcion</label>
+                      <div className="control">
+                        <textarea className="textarea" onChange = {this.handleDescripcion} id="descripcion" placeholder="Textarea"></textarea>
                       </div>
                     </div>
-                    <div class="field is-grouped">
-                      <div class="control">
-                        <button class="button is-link" onClick={this.handleValues}>Submit</button>
+                    <div className="field is-grouped">
+                      <div className="control">
+                        <button className="button is-link" onClick={this.handleValues}>Submit</button>
                       </div>
-                      <div class="control">
-                        <button class="button is-text">Cancel</button>
+                      <div className="control">
+                        <button className="button is-text">Cancel</button>
                       </div>
                     </div>
                 </div>
