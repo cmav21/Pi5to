@@ -2,15 +2,28 @@ import React, {Component} from 'react';
 import './RepositorioCard.scss'
 import { connect } from 'react-redux'
 import {loginSuccess} from "../../actions/UserActions";
+import { Card as CardWrapper } from '../Resources/ResourceCard'
+import { Link } from 'react-router-dom'
 import modalImagePicker from "../../assets/modalImagePicker";
+import API from '../../api'
+import axios from 'axios'
+import Confirmation from "../common/Confirmation";
 
 class RepositorioCard extends Component {
+  state = { confirm: "" };
+
+  onDelete = () => {
+    axios.delete(`${API}/repositorios/${this.props.repo.id}`)
+      .then( res => { this.props.fetchRepos() })
+      .catch( err => { alert(err) })
+  };
+
   render() {
     const c = this.props.users.userLogged ?
                 this.props.users.userLogged.tipo === "MANAGER" ? "card card--big" : "card card--big cv"
               : "card card--big cv";
     return (
-        <div className={c}>
+        <CardWrapper className={c}>
           <div className="card__image" style={{backgroundImage: `url(${modalImagePicker()})`}}/>
           <h2 className="card__title">{this.props.repo.nombre}</h2><span
           className="card__subtitle">By ... </span>
@@ -18,13 +31,15 @@ class RepositorioCard extends Component {
           {
             this.props.users.userLogged ?
               <div className="card__action-bar">
+                <Link to={`/repositories/${this.props.repo.id}/addresource`}>
+                  <button className="card__button"> Agregar recurso</button>
+                </Link>
                 <button className="card__button">Editar</button>
-                <button className="card__button">Eliminar</button>
+                <Confirmation onAccept={this.onDelete} text={"Eliminar"}/>
               </div>:
               <div/>
           }
-
-        </div>
+        </CardWrapper>
     );
   }
 }

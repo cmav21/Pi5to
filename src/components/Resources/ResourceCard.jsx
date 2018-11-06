@@ -1,48 +1,36 @@
 import React from 'react'
 import 'bulma'
+import styled from 'styled-components'
 import './Resources.scss'
+import modalImagePicker from "../../assets/modalImagePicker";
 import { getResourceFormat } from "../../helpers/helpers"
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import API from '../../api'
 
-const ResourceCard = ( resource ) => {
-  resource = resource.resource;
-  const format = getResourceFormat(resource.formato.toUpperCase());
+export const Card = styled.div`
+  opacity: 0.7;
 
-  return (<div className="column is-one-third">
-    <div className="card">
-      <div className="card-content">
-        <div className="media">
-          <div className="media-content">
-            <Link to={`/resource/${resource.id}`} id={resource.id}>
-              <p className="title is-4 no-padding">{resource.nombre}</p> 
-            </Link>
-            <p className="subtitle is-6">Autor: {resource.autor}</p>
-            <p className="subtitle is-6">Categoria: {resource.categoria}</p>
-          </div>
-        </div>
-        <div className="content formatoWraper">
-          {resource.descripcion}
-          <div className="is-clearfix">
-            <p className="is-pulled-right">
-              <i className={format + " formatoIcon"}/>
-            </p>
-            <span className="tag is-danger is-large likes is-pulled-left">
-              <i className="fas fa-heart"/>
-              <p className="numLikes">{' ' + resource.numLikes }</p>
-            </span>
-            <button class="button is-danger is-outlined">Eliminar recurso</button>
-            {/* <div class="notification is-danger">
-          <button class="delete"></button>
-          Desea Eliminar este recurso?<br/>
-          <button></button>
-        </div> */}
-          </div>
-        </div>
-      </div>
+  &:hover{
+    opacity: 1;
+  }
+`
+
+const ResourceCard = (props) => 
+  <Card className={"card card--big"} onClick={() => props.history.push(`/resource/${props.resource.id}`)}>
+    <div className="card__image" style={{ backgroundImage: `url(${modalImagePicker()})`, filter: "brightness(20%)"}} />
+    <div className="rsc_title">
+      <h2 className="card__title">{props.resource.nombre}</h2>
+      <span className="card__title" style={{position: "inherit", top: 167, fontSize: 16}}>{props.resource.autor}</span>
+      <p className="card__title" style={{ position: "inherit", top: 163, fontSize: 14 }}>{props.resource.categoria}</p>
+      <i className={getResourceFormat(props.resource.formato.toUpperCase()) + " formatoIcon is-pulled-right"} />
+      <span className="tag is-danger likes is-pulled-right">
+        <i className="fas fa-heart" />
+        <p className="numLikes">{' ' + props.resource.numLikes}</p>
+      </span>
     </div>
-  </div>);
-};
+    <p className="card__text">{props.resource.descripcion}</p>
+  </Card>
 
-export default ResourceCard;
+
+export default withRouter(ResourceCard);
