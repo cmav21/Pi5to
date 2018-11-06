@@ -32,8 +32,12 @@ const ResourceCard = ( resource ) => {
               <i className="fas fa-heart"/>
               <p className="numLikes">{' ' + resource.numLikes }</p>
             </span>
-            <a class="button is-info is-outlined">ver recurso</a>
-            <a class="button is-danger is-outlined">Eliminar recurso</a>
+            <button class="button is-danger is-outlined">Eliminar recurso</button>
+            {/* <div class="notification is-danger">
+          <button class="delete"></button>
+          Desea Eliminar este recurso?<br/>
+          <button></button>
+        </div> */}
           </div>
         </div>
       </div>
