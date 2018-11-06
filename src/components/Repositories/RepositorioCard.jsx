@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './RepositorioCard.scss'
 import { connect } from 'react-redux'
-import {loginSuccess} from "../../actions/UserActions";
+import {withRouter} from "react-router-dom";
 import { Card as CardWrapper } from '../Resources/ResourceCard'
 import { Link } from 'react-router-dom'
 import modalImagePicker from "../../assets/modalImagePicker";
@@ -23,8 +23,8 @@ class RepositorioCard extends Component {
                 this.props.users.userLogged.tipo === "MANAGER" ? "card card--big" : "card card--big cv"
               : "card card--big cv";
     return (
-        <CardWrapper className={c}>
-          <div className="card__image" style={{backgroundImage: `url(${modalImagePicker()})`}}/>
+        <CardWrapper className={c}> 
+        <div className="card__image" style={{ backgroundImage: `url(${modalImagePicker()})` }} onClick={() => this.props.history.push(`/repository/${this.props.repo.id}`)}/>
           <h2 className="card__title">{this.props.repo.nombre}</h2><span
           className="card__subtitle">By ... </span>
           <p className="card__text">{this.props.repo.descripcion}</p>
@@ -48,4 +48,4 @@ let Card = connect( state => ({
   users: state.users
 }), {})(RepositorioCard);
 
-export default Card;
+export default withRouter(Card);

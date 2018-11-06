@@ -44,14 +44,14 @@ class ResouceForm extends Component {
     
             axios.post(`${API}/repositorios/${this.props.match.params.id}/newrecurso/`, data)
                 .then( res => {
-                    this.props.history.push('/repositorios')
+                    this.props.history.push("/repositories");
                 }).catch( e => {
                     alert("No pudo subirse el archivo");
                 })    
         }
     }
 
-
+    // TODO CHANGE class by className
     render() {
         return(
             <div className="columns">
