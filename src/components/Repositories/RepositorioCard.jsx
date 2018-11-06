@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './RepositorioCard.scss'
 import { connect } from 'react-redux'
 import {loginSuccess} from "../../actions/UserActions";
+import { Link } from 'react-router-dom'
 import modalImagePicker from "../../assets/modalImagePicker";
 import API from '../../api'
 import axios from 'axios'
@@ -9,8 +10,6 @@ import Confirmation from "../common/Confirmation";
 
 class RepositorioCard extends Component {
   state = { confirm: "" };
-  handleConfirm = () => this.setState({ confirm: "is_active"});
-  handleCancel = () => this.setState({ confirm: "" });
 
   onDelete = () => {
     axios.delete(`${API}/repositorios/${this.props.repo.id}`)
@@ -31,12 +30,11 @@ class RepositorioCard extends Component {
           {
             this.props.users.userLogged ?
               <div className="card__action-bar">
+                <Link to={`/repositories/${this.props.repo.id}/addresource`}>
+                  <button className="card__button"> Agregar recurso</button>
+                </Link>
                 <button className="card__button">Editar</button>
-                <Confirmation
-                  onClick={this.onDelete}
-                  onConfirm={this.handleConfirm}
-                  onCancel={this.handleCancel}
-                  active={this.state.confirm}/>
+                <Confirmation onAccept={this.onDelete} text={"Eliminar"}/>
               </div>:
               <div/>
           }

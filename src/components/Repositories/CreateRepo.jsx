@@ -45,6 +45,9 @@ class CreateRepo extends Component {
         this.props.fetch();
       })
       .catch(err => console.log(err))
+      .then(()=>{
+        this.setState({ showModal: "", nombre: "", descripcion: "", etiquetas: "" });
+      })
   };
 
   render() {
@@ -57,19 +60,19 @@ class CreateRepo extends Component {
         <div className={"modal is-" + this.state.showModal} role="alert" style={{paddingTop:45, overflow:"inherit"}}>
 
           <div className="groupmodal">
-            <input type="text" className={"inputmodal"} onChange={this.handleNombre}/>
+            <input type="text" className={"inputmodal"} onChange={this.handleNombre} value={this.state.nombre}/>
             <span className="highlight"/>
             <span className="bar"/>
             <label className={"labelmodal"}>Nombre</label>
           </div>
           <div className="groupmodal">
-            <input type="text" className={"inputmodal"} onChange={this.handleDescripcion}/>
+            <input type="text" className={"inputmodal"} onChange={this.handleDescripcion} value={this.state.descripcion}/>
             <span className="highlight"/>
             <span className="bar"/>
             <label className={"labelmodal"}>Descripción</label>
           </div>
           <div className="groupmodal">
-            <input type="text" className={"inputmodal"} onChange={this.handleEtiquetas}/>
+            <input type="text" className={"inputmodal"} onChange={this.handleEtiquetas} value={this.state.etiquetas}/>
             <span className="highlight"/>
             <span className="bar"/>
             <label className={"labelmodal"}>Etiquetas</label>

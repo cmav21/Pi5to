@@ -27,6 +27,7 @@ const MainRoutes = () => {
         <Route exact path='/resource/:id' component={ResourceDescription} />
         <Route exact path='/addresource' component={AddResource}/>
         <Route exact path='/repositories' component={RepositoryList}/>
+        <Route exact path='/repositories/:id/addresource' component={AddResource}/>
 
 
         <Route component={ERROR404} />

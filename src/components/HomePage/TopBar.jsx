@@ -6,10 +6,15 @@ import 'bulma'
 
 
 class TopBar extends Component {
+  state = { burger: "" }
   styles = {
     icon: { position: "relative",
             top: -24 }
   };
+
+  activate = () => { 
+    this.setState(prevstate => ({ burger: prevstate.burger === 'is-active' ? "" : 'is-active' })) 
+  }
 
   renderManagerButtons = () => {
     const user = this.props.users.userLogged;
@@ -78,13 +83,13 @@ class TopBar extends Component {
               <Link to="/">
                 <img src={logo} alt="Logo" width="120" />
               </Link>
-              <span className="navbar-burger burger" data-target="navbarMenuHeroA">
+              <span className={"navbar-burger burger nav-toggle " + this.state.burger} data-target="navbarMenuHeroA" onClick={this.activate}>
                 <span/>
                 <span/>
                 <span/>
               </span>
             </div>
-            <div id="navbarMenuHeroA" className="navbar-menu">
+            <div id="navbarMenuHeroA" className={"navbar-menu " + this.state.burger}>
               <div className="navbar-end">
                 <Link to="/" className="navbar-item is-active">
                   Inicio
