@@ -16,38 +16,29 @@ class ResouceForm extends Component {
         descripcion:""
     }
 
+    handleNombre = (e) => this.setState({nombre: e.target.value})
+    handleAutor = (e) => this.setState({autor:e.target.value})
+    handleCategoria = (e) => this.setState({categoria:e.target.value})
+    handleFormato = (e) => this.setState({formato:e.target.value})
+    handleEdicion = (e) => this.setState({edicion:e.target.value})
+    handleEtiquetas = (e) => this.setState({etiquetas:e.target.value})
+    handleDescripcion = (e) => this.setState({descripcion:e.target.value})
+
     handleValues = () => {
-        let nombre = document.getElementById('nombre').value;
-        let autor = document.getElementById('autor').value;
-        let categoria = document.getElementById('categoria').value;
-        let formato = document.getElementById('formato').value;
-        let edicion = document.getElementById('edicion').value;
-        let etiquetas = document.getElementById('etiquetas').value;
-        let descripcion = document.getElementById('descripcion').value;
-        if( autor == ""  || categoria == "" || formato == "" || edicion == "" || etiquetas == "" || descripcion == "") {
+        if( this.state.autor == ""  || this.state.categoria == "" || this.state.formato == "" || this.state.edicion == "" || this.state.etiquetas == "" || this.state.descripcion == "") {
             this.setState({nombre:"no"});
-        }
+        }  
         else {
-            this.setState({
-                nombre: nombre,
-                autor: autor,
-                categoria: categoria,
-                formato: formato,
-                edicion: edicion,
-                etiquetas: etiquetas,
-                descripcion : descripcion
-            });   
-            const data = JSON.stringify({
-                categoria: this.state.categoria,
-                formato:this.state.formato,
-                nombre:this.state.nombre,
-                autor:this.state.autor,
-                edicion:this.state.edicion,
-                descripcion: this.state.descripcion
+            const data = {
+                'categoria': this.state.categoria,
+                'formato':this.state.formato,
+                'nombre':this.state.nombre,
+                'autor':this.state.autor,
+                'edicion':this.state.edicion,
+                'descripcion': this.state.descripcion
                 }
-                );
     
-                axios.post(`${API}/recursos/`, {data}   ).then( 
+                axios.post(`${API}/recursos/`, data).then( 
                     res => {console.log(res);
                             console.log(res.data)}
                 //     <article class="message is-success">
@@ -77,6 +68,7 @@ class ResouceForm extends Component {
         }
     }
 
+
     render() {
         return(
             <div className="columns">
@@ -87,20 +79,20 @@ class ResouceForm extends Component {
                     <div class="field">
                         <label class="label">Nombre</label>
                         <div class="control">
-                            <input class="input" type="text" id="nombre" placeholder="Nombre"/>
+                            <input class="input" onChange = {this.handleNombre} type="text" id="nombre" placeholder="Nombre"/>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Autor</label>
                         <div class="control">
-                            <input class="input" type="text" id="autor" placeholder="Autor"/>
+                            <input class="input" onChange = {this.handleAutor} type="text" id="autor" placeholder="Autor"/>
                         </div>
                     </div>
                     <div class="field">
                       <label class="label">Categoria</label>
                       <div class="control">
                         <div class="select">
-                          <select id="categoria">
+                          <select id="categoria" onChange={this.handleCategoria}>
                             <option value=""> </option>
                             <option value="Lirico">Lirico</option>
                             <option value="Epico">Epico</option>
@@ -112,25 +104,25 @@ class ResouceForm extends Component {
                     <div class="field">
                         <label class="label">Formato</label>
                         <div class="control">
-                            <input class="input" type="text" id="formato" placeholder="Formato"/>
+                            <input class="input" onChange = {this.handleFormato} type="text" id="formato" placeholder="Formato"/>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Edicion</label>
                         <div class="control">
-                            <input class="input" type="text" id="edicion" placeholder="Edicion"/>
+                            <input class="input" onChange = {this.handleEdicion} type="text" id="edicion" placeholder="Edicion"/>
                         </div>
                     </div>
                     <div class="field">
                         <label class="label">Etiquetas</label>
                         <div class="control">
-                            <input class="input" type="text" id="etiquetas" placeholder="Etiquetas"/>
+                            <input class="input" onChange = {this.handleEtiquetas} type="text" id="etiquetas" placeholder="Etiquetas"/>
                         </div>
                     </div>
                     <div class="field">
                       <label class="label">Descripcion</label>
                       <div class="control">
-                        <textarea class="textarea" id="descripcion" placeholder="Textarea"></textarea>
+                        <textarea class="textarea" onChange = {this.handleDescripcion} id="descripcion" placeholder="Textarea"></textarea>
                       </div>
                     </div>
                     <div class="field is-grouped">
