@@ -9,11 +9,9 @@ import ResourceDescription from '../components/Resources/ResourceDescription';
 import ERROR404 from '../components/pages/404';
 import UserLogin from '../components/Users/UserLogin/UserLogin';
 import AddResource from '../components/Resources/AddResource';
-
-import axios from 'axios'
-import API from '../api'
 import UserSignUp from "../components/Users/UserSignUp/UserSignUp";
 import RepositoryList from "../components/Repositories/RepositoryList";
+import RepositoryView from '../components/Repositories/RepositoryView';
 
 const MainRoutes = () => {
   return(
@@ -28,6 +26,7 @@ const MainRoutes = () => {
         <Route exact path='/addresource' component={AddResource}/>
         <Route exact path='/repositories' component={RepositoryList}/>
         <Route exact path='/repositories/:id/addresource' component={AddResource}/>
+        <Route exacy path='/repository/:id' component={RepositoryView}/>
 
 
         <Route component={ERROR404} />
