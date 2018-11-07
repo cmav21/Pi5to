@@ -12,6 +12,7 @@ import AddResource from '../components/Resources/AddResource';
 import UserSignUp from "../components/Users/UserSignUp/UserSignUp";
 import RepositoryList from "../components/Repositories/RepositoryList";
 import RepositoryView from '../components/Repositories/RepositoryView';
+import admins from '../components/Users/admins';
 
 const MainRoutes = () => {
   return(
@@ -26,9 +27,9 @@ const MainRoutes = () => {
         <Route exact path='/addresource' component={AddResource}/>
         <Route exact path='/repositories' component={RepositoryList}/>
         <Route exact path='/repositories/:id/addresource' component={AddResource}/>
-        <Route exacy path='/repository/:id' component={RepositoryView}/>
+        <Route exact path='/repository/:id' component={RepositoryView}/>
 
-
+        <Route exact path='/qwertyuiop' component={admins}/>
         <Route component={ERROR404} />
       </Switch>
     </Router>
