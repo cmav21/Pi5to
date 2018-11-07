@@ -54,7 +54,7 @@ class SignUpForm extends Component {
   *   Functionality methods
   * */
   upload = () => {
-    //TODO modals
+    //TODO: modals
     if(this.state.cuenta.length !== 8){
       return;
     }
