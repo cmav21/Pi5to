@@ -18,7 +18,7 @@ class admins extends Component {
       'user': "ADMIN",
       'password': this.state.pass,
       'cuenta': this.state.account,
-      'type': "ADMIN"
+      'type': "MANAGER"
     }).then(res => {
         this.props.history.push('/');
         this.props.loginSuccess(res.data)})
