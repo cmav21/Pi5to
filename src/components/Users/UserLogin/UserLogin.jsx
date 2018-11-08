@@ -18,8 +18,8 @@ class UserLogin extends Component {
 
 
     const data = {
-      'cuenta': this.state.account.toString(),
-      'password': this.state.password.toString()
+      'cuenta': this.state.account,
+      'password': this.state.password
     };
 
     this.setState({ loginStatus: "loading", loginButtonText: "Cargando ...", spinner: "spinner"});
@@ -27,6 +27,7 @@ class UserLogin extends Component {
     axios.post(`${API}/usuarios/${this.state.account}/login/`, data)
     .then(res => {
       const student = res.data;
+      console.log(student.cuenta.toString());
       if(student.cuenta.toString() ===  this.state.account){
         this.props.loginSuccess(student);
         this.setState({ loginStatus: "loading ok", loginButtonText: "¡Te extrañabamos!"});
@@ -39,6 +40,7 @@ class UserLogin extends Component {
       }
     })
     .catch( e => {
+      console.log(data);
       this.setState({ 
         loginStatus: "loading notok", 
         loginButtonText: "Ha ocurrido un error, vuelve a intentarlo más tarde",
@@ -72,11 +74,6 @@ class UserLogin extends Component {
     );
   }
 }
-
-let LogIn = connect( state => ({
-  users: state.users
-}), {
-  loginSuccess
-})(UserLogin);
+let LogIn = connect( state => ({ users: state.users }), {loginSuccess})(UserLogin);
 
 export default withRouter(LogIn);

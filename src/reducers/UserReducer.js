@@ -15,6 +15,10 @@ export default function ( state = {}, action ) {
       return Object.assign({}, state, {
         resource: action.payload
       });
+    case types.RESOURCE_ADDED:
+      return Object.assign({},state, {
+          resourceAdded : action.payload  
+      });
     default:
       return state
   }

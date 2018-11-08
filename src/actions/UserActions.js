@@ -4,6 +4,13 @@ import axios from 'axios'
 import API from '../api'
 
 
+export function resourceAdded(added) {
+  return {
+    type: types.RESOURCE_ADDED,
+    payload: added
+  }
+}
+
 export function resourcesFound(resources) {
   return {
     type: types.GET_RESOURCES_BY,

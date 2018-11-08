@@ -9,6 +9,7 @@ import { withRouter } from 'react-router-dom';
 class SignUpForm extends Component {
   state = {
     nombre: "",
+    name: "",
     email: "",
     cuenta: 0,
     contrasena: "",
@@ -25,6 +26,7 @@ class SignUpForm extends Component {
   *   Handler functions
   * */
   handleNombre = e => this.setState({ nombre : e.target.value });
+  handleUsuario = e => this.setState({ name : e.target.value });
   handleEmail = e => {
     this.setState({ email : e.target.value });
 
@@ -61,7 +63,6 @@ class SignUpForm extends Component {
     if(this.state.contrasena !== this.state.contrasena2){
       return;
     }
-
     const data = {
       'name': this.state.nombre,
       'career': this.state.carrera,
@@ -69,7 +70,7 @@ class SignUpForm extends Component {
       'user': this.state.name,
       'password': this.state.contrasena,
       'cuenta': this.state.cuenta,
-      'type': this.state.tipo
+      'type': 'MANAGER'
     };
     let err = false;
 
@@ -147,6 +148,16 @@ class SignUpForm extends Component {
           <label className="label">Nombre y Apellidos</label>
           <div className="control has-icons-left">
             <input className="input" type="text" onChange={this.handleNombre}/>
+            <span className="icon is-small is-left">
+              <i className="fas fa-user"/>
+            </span>
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Nombre de usuario</label>
+          <div className="control has-icons-left">
+            <input className="input" type="text" onChange={this.handleUsuario}/>
             <span className="icon is-small is-left">
               <i className="fas fa-user"/>
             </span>

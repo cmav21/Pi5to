@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import API from '../../api';
 import { stringify } from 'querystring';
+import '../../estilos.css'
+import { connect } from 'react-redux'
+import { resourceAdded} from '../../actions/UserActions'
 
 
 // TODO: change the categoria selector by [PDF, Video, Course, etc]
@@ -45,7 +48,9 @@ class ResouceForm extends Component {
             axios.post(`${API}/repositorios/${this.props.match.params.id}/newrecurso/`, data)
                 .then( res => {
                     this.props.history.push("/repositories");
+                    this.props.resourceAdded(true);
                 }).catch( e => {
+                    this.props.resourceAdded(false);
                     alert("No pudo subirse el archivo");
                 })    
         }
@@ -54,27 +59,27 @@ class ResouceForm extends Component {
     // TODO: CHANGE class by className
     render() {
         return(
-            <div className="columns">
+            <div className="columns prueba">
                 <div className = "column is-three-quarters is-half is-offset-one-quarter">
                     <h1 className="title">
                         Registrar recurso
                     </h1>
-                    <div class="field">
-                        <label class="label">Nombre</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleNombre} type="text" id="nombre" placeholder="Nombre"/>
+                    <div className="field">
+                        <label className="label">Nombre</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleNombre} type="text" id="nombre" placeholder="Nombre"/>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Autor</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleAutor} type="text" id="autor" placeholder="Autor"/>
+                    <div className="field">
+                        <label className="label">Autor</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleAutor} type="text" id="autor" placeholder="Autor"/>
                         </div>
                     </div>
-                    <div class="field">
-                      <label class="label">Categoria</label>
-                      <div class="control">
-                        <div class="select">
+                    <div className="field">
+                      <label className="label">Categoria</label>
+                      <div className="control">
+                        <div className="select">
                           <select id="categoria" onChange={this.handleCategoria}>
                             <option value=""> </option>
                             <option value="Lirico">Lirico</option>
@@ -84,28 +89,28 @@ class ResouceForm extends Component {
                         </div>
                       </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Formato</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleFormato} type="text" id="formato" placeholder="Formato"/>
+                    <div className="field">
+                        <label className="label">Formato</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleFormato} type="text" id="formato" placeholder="Formato"/>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Edicion</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleEdicion} type="text" id="edicion" placeholder="Edicion"/>
+                    <div className="field">
+                        <label className="label">Edicion</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleEdicion} type="text" id="edicion" placeholder="Edicion"/>
                         </div>
                     </div>
-                    <div class="field">
-                        <label class="label">Etiquetas</label>
-                        <div class="control">
-                            <input class="input" onChange = {this.handleEtiquetas} type="text" id="etiquetas" placeholder="Etiquetas"/>
+                    <div className="field">
+                        <label className="label">Etiquetas</label>
+                        <div className="control">
+                            <input className="input" onChange = {this.handleEtiquetas} type="text" id="etiquetas" placeholder="Etiquetas"/>
                         </div>
                     </div>
-                    <div class="field">
-                      <label class="label">Descripcion</label>
-                      <div class="control">
-                        <textarea class="textarea" onChange = {this.handleDescripcion} id="descripcion" placeholder="Textarea"></textarea>
+                    <div className="field">
+                      <label className="label">Descripcion</label>
+                      <div className="control">
+                        <textarea className="textarea" onChange = {this.handleDescripcion} id="descripcion" placeholder="Textarea"></textarea>
                       </div>
                     </div>
                     <div class="field is-grouped">
@@ -122,4 +127,6 @@ class ResouceForm extends Component {
     }
 }
 
-export default withRouter(ResouceForm);
+let resource = connect(state => ({users: state.users}),resourceAdded)(ResouceForm)
+
+export default resource;
