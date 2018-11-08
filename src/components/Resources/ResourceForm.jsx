@@ -10,7 +10,7 @@ import { resourceAdded} from '../../actions/UserActions'
 
 
 // TODO: change the categoria selector by [PDF, Video, Course, etc]
-class ResouceForm extends Component {
+class ResourceForm extends Component {
 
     state = {
         nombre: "",
@@ -29,10 +29,10 @@ class ResouceForm extends Component {
     handleEdicion = (e) => this.setState({edicion:e.target.value})
     handleEtiquetas = (e) => this.setState({etiquetas:e.target.value})
     handleDescripcion = (e) => this.setState({descripcion:e.target.value})
-
+    
     handleSave = () => {
         if( this.state.autor == ""  || this.state.categoria == "" || this.state.formato == "" || this.state.edicion == "" || this.state.etiquetas == "" || this.state.descripcion == "") {
-            this.setState({nombre:"no"});
+            this.props.resourceAdded({'added':"false"})
         }  
         else {
             const data = {
@@ -44,20 +44,19 @@ class ResouceForm extends Component {
                 'descripcion': this.state.descripcion,
                 'etiquetas': this.state.etiquetas
             }
-    
             axios.post(`${API}/repositorios/${this.props.match.params.id}/newrecurso/`, data)
-                .then( res => {
-                    this.props.history.push("/repositories");
-                    this.props.resourceAdded(true);
-                }).catch( e => {
-                    this.props.resourceAdded(false);
-                    alert("No pudo subirse el archivo");
-                })    
+            .then(res => {
+                    this.props.resourceAdded({'added':"true"})
+                    this.props.history.push(`/repositories/${this.props.match.params.id}/addresource/`);
+            }).catch( e => {
+                this.props.resourceAdded({'added':"false"})
+            })    
         }
     }
-
+    
     // TODO: CHANGE class by className
     render() {
+        console.log(this.props.match.params.id);
         return(
             <div className="columns prueba">
                 <div className = "column is-three-quarters is-half is-offset-one-quarter">
@@ -113,12 +112,12 @@ class ResouceForm extends Component {
                         <textarea className="textarea" onChange = {this.handleDescripcion} id="descripcion" placeholder="Textarea"></textarea>
                       </div>
                     </div>
-                    <div class="field is-grouped">
-                      <div class="control">
-                        <button class="button is-link" onClick={this.handleSave}>Guardar</button>
+                    <div className="field is-grouped">
+                      <div className="control">
+                        <button className="button is-link" onClick={this.handleSave}>Guardar</button>
                       </div>
-                      <div class="control">
-                        <button class="button is-text" onClick={()=>this.props.history.push('/')}>Cancelar</button>
+                      <div className="control">
+                        <button className="button is-text" onClick={()=>this.props.history.push('/')}>Cancelar</button>
                       </div>
                     </div>
                 </div>
@@ -127,6 +126,6 @@ class ResouceForm extends Component {
     }
 }
 
-let resource = connect(state => ({users: state.users}),resourceAdded)(ResouceForm)
+let resource = connect(state => ({users: state.users}),{resourceAdded})(ResourceForm)
 
-export default resource;
+export default withRouter(resource);
