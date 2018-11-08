@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { resourceAdded} from '../../actions/UserActions'
 
 
-// TODO change the categoria selector by [PDF, Video, Course, etc]
+// TODO: change the categoria selector by [PDF, Video, Course, etc]
 class ResouceForm extends Component {
 
     state = {
@@ -56,7 +56,7 @@ class ResouceForm extends Component {
         }
     }
 
-    // TODO CHANGE class by className
+    // TODO: CHANGE class by className
     render() {
         return(
             <div className="columns prueba">

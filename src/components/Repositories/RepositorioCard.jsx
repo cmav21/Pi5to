@@ -8,6 +8,7 @@ import modalImagePicker from "../../assets/modalImagePicker";
 import API from '../../api'
 import axios from 'axios'
 import Confirmation from "../common/Confirmation";
+import EditRepo from './EditRepo';
 
 class RepositorioCard extends Component {
   state = { confirm: "" };
@@ -34,7 +35,7 @@ class RepositorioCard extends Component {
                 <Link to={`/repositories/${this.props.repo.id}/addresource`}>
                   <button className="card__button"> Agregar recurso</button>
                 </Link>
-                <button className="card__button">Editar</button>
+                <EditRepo/>
                 <Confirmation onAccept={this.onDelete} text={"Eliminar"}/>
               </div>:
               <div/>
