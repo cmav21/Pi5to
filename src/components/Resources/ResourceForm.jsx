@@ -6,7 +6,7 @@ import API from '../../api';
 import { stringify } from 'querystring';
 import '../../estilos.css'
 import { connect } from 'react-redux'
-import { resourceAdded } from '../../actions/ManagerActions'
+import { resourceAdded} from '../../actions/UserActions'
 
 
 // TODO change the categoria selector by [PDF, Video, Course, etc]
@@ -48,7 +48,9 @@ class ResouceForm extends Component {
             axios.post(`${API}/repositorios/${this.props.match.params.id}/newrecurso/`, data)
                 .then( res => {
                     this.props.history.push("/repositories");
+                    this.props.resourceAdded(true);
                 }).catch( e => {
+                    this.props.resourceAdded(false);
                     alert("No pudo subirse el archivo");
                 })    
         }
@@ -125,6 +127,6 @@ class ResouceForm extends Component {
     }
 }
 
-let resource = connect(state => ({ users: state.users }), {resourceAdded})(ResouceForm);
+let resource = connect(state => ({users: state.users}),resourceAdded)(ResouceForm)
 
-export default withRouter(resource);
+export default resource;
