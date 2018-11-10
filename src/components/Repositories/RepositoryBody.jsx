@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ResourceCard from "../Resources/ResourceCard";
+import ResourceCard from "../Resources/RepoResourceCard";
 import styled from 'styled-components'
 import imgPicker from '../../assets/modalImagePicker'
 
