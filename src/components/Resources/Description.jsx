@@ -5,11 +5,12 @@ import axios from 'axios'
 import API from "../../api"
 import { connect } from 'react-redux'
 import { updateResource } from '../../actions/UserActions'
+import '../../estilos.css'
 
 class Description extends Component {
   style = {
     heroStyle : { alignItems : "flex-start"},
-    box: { paddingLeft: "10vw" }
+    box: { paddingLeft: "10vw" },
   };
 
   giveLike = () => {
@@ -42,15 +43,16 @@ class Description extends Component {
       return (<h1 className=""> Ha ocurrido un error </h1>);
     else {
       return (
-        <div className=" hero-body columns is-multiline" style={this.style.heroStyle}>
+<div className=" hero-body columns is-multiline" style={this.style.heroStyle}>
           <div className="column is-12">
             <div className="content" style={this.style.box}>
               <p className="title is-3">{ resource.nombre }</p>
               <p className="subtitle is-6">{ resource.autor }</p>
               <p className="subtitle is-6">{ resource.etiquetas }</p>
 
-              <div className="stats is-pulled-right">
-                <div className="columns">
+            </div>
+              <div className="stats is-pulled-right iconos">
+                <div className="columns icono">
                   <div className="column c icon has-text-danger">
                     <i className="icons fas fa-heart" onClick={this.giveLike}/>
                   </div>
@@ -58,7 +60,7 @@ class Description extends Component {
                     <p className="nums">{ resource.numLikes }</p>
                   </div>
                   </div>
-                  <div className="columns">
+                  <div className="columns icono">
                   <div className="column c icon has-text-info">
                     <i className="icons fas fa-eye"/>
                   </div>
@@ -67,7 +69,7 @@ class Description extends Component {
                   </div>
                 </div>
               </div>
-            </div>
+
             <div className="columns is-full" style={{marginTop: "4vw"}}>
               <div className="column is-8 is-offset-2">
                 <p className="title is-4">Descripción </p>

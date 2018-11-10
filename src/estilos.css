@@ -3,3 +3,21 @@
         padding: 10px;
     }
 }
+
+@media only screen and (max-width: 846px) {
+    .iconos {
+        display: flex;
+        position: absolute;
+        flex-wrap: wrap;
+        background-color: blue;
+        bottom: 20%;
+    }
+
+    .icono {
+        display: flex;
+        position: absolute;
+        bottom: 0%;
+    }
+
+
+}
