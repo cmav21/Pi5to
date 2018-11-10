@@ -43,12 +43,14 @@ class RepositoryBody extends Component {
           </div>
           <div className="column is-full is-offset-1" style={{ marginTop: "4vw" }}>
             <h1 className="title is-3">Recursos</h1>
+            <div className={"columns is-multiline"}>
             {
               repo.recursos ? repo.recursos.map((rsc, i) => {
                 return <ResourceCard resource={rsc} key={i} />
               })
               : <div></div>
             }
+            </div>
           </div>
         </div>
         <div className="column" />
