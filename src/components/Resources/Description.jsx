@@ -44,16 +44,16 @@ class Description extends Component {
     else {
       return (
 <div className=" hero-body columns is-multiline" style={this.style.heroStyle}>
-          <div className="column is-12">
+          <div className="column is-12 relative">
             <div className="content" style={this.style.box}>
               <p className="title is-3">{ resource.nombre }</p>
               <p className="subtitle is-6">{ resource.autor }</p>
               <p className="subtitle is-6">{ resource.etiquetas }</p>
 
             </div>
-              <div className="stats is-pulled-right iconos">
+              <div className="is-pulled-right iconos">
                 <div className="columns icono">
-                  <div className="column c icon has-text-danger">
+                  <div className="column c icon has-text-danger ">
                     <i className="icons fas fa-heart" onClick={this.giveLike}/>
                   </div>
                   <div className="column c">
