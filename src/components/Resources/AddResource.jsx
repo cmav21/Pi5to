@@ -6,13 +6,23 @@ import { withRouter } from 'react-router-dom'
 
 class AddResource extends Component {
     state = {
-        added: ""
+        added: "",
+        addClass: "notification is-danger"
     }
 
     componentWillReceiveProps(nextProps){
         this.setState({
             added: nextProps.users.resourceAdded.added
         })
+    }
+
+    dismissNotification = () => {
+        if(this.state.addClass == "notification is-danger") {
+            this.setState({
+                added: "hola",
+                addClass: "notification is-danger is-hidden"
+            });
+        }
     }
     
     renderNotification = () => {
@@ -25,14 +35,18 @@ class AddResource extends Component {
             );
         }
         else if(this.state.added === "false") {
-            return(<div className="notification is-danger">
-                <button className="delete"></button>
+            if(this.state.addClass == "notification is-danger is-hidden") {
+                this.setState({
+                    addClass: "notification is-danger"
+                });
+            }
+            return(<div className={this.state.addClass}>
+                <button className="delete" onClick = {this.dismissNotification}></button>
                 Ups!, hay un problema con los datos introducidos
             </div>)
         }
     }
     render() {
-        console.log(this.props.users);
         return(
             <div className="hero is-light is-fullheight">
                 <TopBar/>

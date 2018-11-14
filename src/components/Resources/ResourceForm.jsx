@@ -9,7 +9,6 @@ import { connect } from 'react-redux'
 import { resourceAdded} from '../../actions/UserActions'
 
 
-// TODO: change the categoria selector by [PDF, Video, Course, etc]
 class ResourceForm extends Component {
 
     state = {
@@ -54,7 +53,6 @@ class ResourceForm extends Component {
         }
     }
     
-    // TODO: CHANGE class by className
     render() {
         console.log(this.props.match.params.id);
         return(
@@ -80,10 +78,10 @@ class ResourceForm extends Component {
                       <div className="control">
                         <div className="select">
                           <select id="categoria" onChange={this.handleCategoria}>
-                            <option value=""> </option>
-                            <option value="Lirico">Lirico</option>
-                            <option value="Epico">Epico</option>
-                            <option value="Dramatico">Dramatico</option>
+                            <option value="PDF">PDF</option>
+                            <option value="Video">Video</option>
+                            <option value="Curso">Curso</option>
+                            <option value="Imagen">Imagen</option>
                           </select>
                         </div>
                       </div>

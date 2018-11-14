@@ -35,7 +35,6 @@ class Description extends Component {
 
   }
 
-  // TODO: make the icons to be responsive
   render() {
     const { resource } = this.props;
 
