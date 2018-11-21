@@ -50,26 +50,27 @@ class Description extends Component {
               <p className="subtitle is-6">{ resource.etiquetas }</p>
 
             </div>
-              <div className="is-pulled-right iconos">
+
+            <div className="is-pulled-right iconos" style={{ left: "25vw" }}>
+              <div className="columns icono">
+                <div className="column c icon has-text-danger ">
+                  <i className="icons fas fa-heart" onClick={this.giveLike}/>
+                </div>
+                <div className="column c">
+                  <p className="nums">{ resource.numLikes }</p>
+                </div>
+                </div>
                 <div className="columns icono">
-                  <div className="column c icon has-text-danger ">
-                    <i className="icons fas fa-heart" onClick={this.giveLike}/>
-                  </div>
-                  <div className="column c">
-                    <p className="nums">{ resource.numLikes }</p>
-                  </div>
-                  </div>
-                  <div className="columns icono">
-                  <div className="column c icon has-text-info">
-                    <i className="icons fas fa-eye"/>
-                  </div>
-                  <div className="column c">
-                    <p className="nums">{resource.numConsultas }</p>
-                  </div>
+                <div className="column c icon has-text-info">
+                  <i className="icons fas fa-eye"/>
+                </div>
+                <div className="column c">
+                  <p className="nums">{resource.numConsultas }</p>
                 </div>
               </div>
+            </div>
 
-            <div className="columns is-full" style={{marginTop: "4vw"}}>
+            <div className="columns is-full" style={{marginTop: "4vw", marginLeft: "4vw"}}>
               <div className="column is-8 is-offset-2">
                 <p className="title is-4">Descripción </p>
                 <p style={{marginLeft: "1vw"}}>{ resource.descripcion }</p>
