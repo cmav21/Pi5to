@@ -78,6 +78,7 @@ class ResourceForm extends Component {
                       <div className="control">
                         <div className="select">
                           <select id="categoria" onChange={this.handleCategoria}>
+                            <option value=""> </option>
                             <option value="PDF">PDF</option>
                             <option value="Video">Video</option>
                             <option value="Curso">Curso</option>
