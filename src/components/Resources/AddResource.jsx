@@ -41,7 +41,6 @@ class AddResource extends Component {
         }
     }
     render() {
-        console.log(this.state);
         return(
             <div className="hero is-light is-fullheight">
                 <TopBar/>
