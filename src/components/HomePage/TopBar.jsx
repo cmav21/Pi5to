@@ -19,8 +19,8 @@ class TopBar extends Component {
   renderManagerButtons = () => {
     const user = this.props.users.userLogged;
     if(user && user.tipo === "MANAGER"){
-      return (<Link to="/addresource" className="navbar-item">
-          Registrar recurso
+      return (<Link to="/consultas" className="navbar-item">
+          Consultas
         </Link>)
     } else {
       return (<Link to="/about" className="navbar-item">
