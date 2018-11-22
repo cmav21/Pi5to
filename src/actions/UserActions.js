@@ -4,13 +4,18 @@ import axios from 'axios'
 import API from '../api'
 
 
-export function resourceAdded(added) {
+export function addNotification(notification) {
   return {
-    type: types.RESOURCE_ADDED,
-    payload: added
+    type: types.ADD_NOTIFICATION,
+    payload: notification
   }
 }
-
+export function clearNotification(id) {
+  return {
+    type: types.CLEAR_NOTIFICATION,
+    payload: id
+  }
+}
 export function resourcesFound(resources) {
   return {
     type: types.GET_RESOURCES_BY,

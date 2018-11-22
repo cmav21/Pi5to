@@ -6,7 +6,7 @@ import API from '../../api';
 import { stringify } from 'querystring';
 import '../../estilos.css'
 import { connect } from 'react-redux'
-import { resourceAdded} from '../../actions/UserActions'
+import { addNotification} from '../../actions/UserActions'
 
 
 class ResourceForm extends Component {
@@ -31,7 +31,10 @@ class ResourceForm extends Component {
     
     handleSave = () => {
         if( this.state.autor == ""  || this.state.categoria == "" || this.state.formato == "" || this.state.edicion == "" || this.state.etiquetas == "" || this.state.descripcion == "") {
-            this.props.resourceAdded({'added':"false"})
+            this.props.addNotification({
+                class: "notification is-danger",
+                strong: "Debes de llenar todos los campos"
+            })
         }  
         else {
             const data = {
@@ -45,16 +48,21 @@ class ResourceForm extends Component {
             }
             axios.post(`${API}/repositorios/${this.props.match.params.id}/newrecurso/`, data)
             .then(res => {
-                    this.props.resourceAdded({'added':"true"})
+                    this.props.addNotification({
+                        class: "notification is-success",
+                        strong: "El recurso ha sido agregado exitosamente"
+                    })
                     this.props.history.push(`/repositories/${this.props.match.params.id}/addresource/`);
             }).catch( e => {
-                this.props.resourceAdded({'added':"false"})
+                this.props.addNotification({
+                    class: "notification is-danger",
+                    strong: "!ups, ha ocurrido un error al realizar el registro"
+                })
             })    
         }
-    }
+        }
     
     render() {
-        console.log(this.props.match.params.id);
         return(
             <div className="columns prueba">
                 <div className = "column is-three-quarters is-half is-offset-one-quarter">
@@ -125,6 +133,6 @@ class ResourceForm extends Component {
     }
 }
 
-let resource = connect(state => ({users: state.users}),{resourceAdded})(ResourceForm)
+let resource = connect(state => ({users: state.users}),{addNotification})(ResourceForm)
 
 export default withRouter(resource);

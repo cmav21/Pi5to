@@ -15,10 +15,14 @@ export default function ( state = {}, action ) {
       return Object.assign({}, state, {
         resource: action.payload
       });
-    case types.RESOURCE_ADDED:
-      return Object.assign({},state, {
-          resourceAdded: action.payload  
-      });
+    case types.ADD_NOTIFICATION:
+      let newState = Object.assign({}, state)
+      newState[Date.now()] = action.payload
+      return newState
+    case types.CLEAR_NOTIFICATION:
+      let modify = Object.assign({}, state)
+      delete modify[action.payload]
+      return modify
     default:
       return state
   }
