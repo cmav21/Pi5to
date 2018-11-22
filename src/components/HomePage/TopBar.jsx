@@ -18,7 +18,11 @@ class TopBar extends Component {
 
   renderManagerButtons = () => {
     const user = this.props.users.userLogged;
-    if(user){
+    if(user && user.tipo === "MANAGER"){
+      return (<Link to="/consultas" className="navbar-item">
+          Consultas
+        </Link>)
+    } else {
       return (<Link to="/about" className="navbar-item">
         ¿Qué es UCHub?
       </Link>)

@@ -13,6 +13,7 @@ import UserSignUp from "../components/Users/UserSignUp/UserSignUp";
 import RepositoryList from "../components/Repositories/RepositoryList";
 import RepositoryView from '../components/Repositories/RepositoryView';
 import admins from '../components/Users/admins';
+import ConsultasView from '../components/Consultas/ConsultasView';
 
 const MainRoutes = () => {
   return(
@@ -28,6 +29,7 @@ const MainRoutes = () => {
         <Route exact path='/repositories' component={RepositoryList}/>
         <Route exact path='/repositories/:id/addresource' component={AddResource}/>
         <Route exact path='/repository/:id' component={RepositoryView}/>
+        <Route exact path='/consultas' component={ConsultasView}/>
 
         <Route exact path='/qwertyuiop' component={admins}/>
         <Route component={ERROR404} />

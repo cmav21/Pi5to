@@ -11,8 +11,8 @@ const Save = styled.button`
     height: 60px;
     width: 60px;
     position: absolute;
-    top: 90%;
-    left: 90%;
+    top: 80%;
+    left: 78%;
     border-radius: 100px;
     color: white;
     font-size: 20px;
@@ -25,6 +25,15 @@ const Save = styled.button`
 class EditRepo extends Component {
   state = { showModal: "", nombre: "", descripcion: "", etiquetas: "" };
 
+  componentDidMount() {
+    this.setState({
+      nombre: this.props.repo.nombre,
+      descripcion: this.props.repo.descripcion,
+      etiquetas: this.props.repo.etiquetas
+    })
+  }
+  
+
   activateModal = () => this.setState({ showModal: "active" });
   deactivateModal = () => this.setState({ showModal: "" });
   handleNombre = e => this.setState({ nombre: e.target.value });
@@ -36,28 +45,24 @@ class EditRepo extends Component {
       "nombre": this.state.nombre,
       "descripcion": this.state.descripcion,
       "etiquetas": this.state.etiquetas,
-      "cuenta": this.props.cuenta
     };
-
-    axios.post(`${API}/repositorios/`, data)
+    
+    axios.put(`${API}/repositorios/${this.props.repo.id}`, data)
       .then(res => {
-        this.setState({ showModal: "", nombre: "", descripcion: "", etiquetas: "" });
         this.props.fetch();
+        this.setState({ showModal: ""})
       })
       .catch(err => console.log(err))
-      .then(() => {
-        this.setState({ showModal: "", nombre: "", descripcion: "", etiquetas: "" });
-      })
   };
 
   render() {
     return (
       <div>
-        <button className="show" aria-haspopup="true" onClick={this.activateModal}>
-          <i className="fas fa-plus" /> {'  '} Crear Repositorio
+        <button style={{position: "relative", top: -40, left: 208, width: 70}} className="show" aria-haspopup="true" onClick={this.activateModal}>
+          <i className="fas fa-pen" /> {'   '} Editar
         </button>
         <div className={"mask " + this.state.showModal} role="dialog" />
-        <div className={"modal is-" + this.state.showModal} role="alert" style={{ paddingTop: 45, overflow: "inherit" }}>
+        <div className={"modal is-" + this.state.showModal} role="alert" style={{ paddingTop: 45, overflow: "inherit", top: 150 }}>
 
           <div className="groupmodal">
             <input type="text" className={"inputmodal"} onChange={this.handleNombre} value={this.state.nombre} />
@@ -82,7 +87,7 @@ class EditRepo extends Component {
             <i className="fas fa-check" />
           </Save>
 
-          <button className="close" role="button" onClick={this.deactivateModal}><i className="fas fa-times" /></button>
+          <button style={{top: -2, right: 25}} className="close" role="button" onClick={this.deactivateModal}><i className="fas fa-times" /></button>
         </div>
       </div>
     );
