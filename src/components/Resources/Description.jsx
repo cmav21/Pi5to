@@ -4,7 +4,7 @@ import './Resources.scss'
 import axios from 'axios'
 import API from "../../api"
 import { connect } from 'react-redux'
-import { updateResource } from '../../actions/UserActions'
+import { updateResource,addNotification} from '../../actions/UserActions'
 import '../../estilos.css'
 
 class Description extends Component {
@@ -23,11 +23,15 @@ class Description extends Component {
     .then(res => {
       console.log(res);
       
-      if(res.data !== "")
+      if(res.data !== "") {
         this.props.updateResource(res);
+      }
       else 
       // TODO: create alert that you have to be logged
-      alert("you have to be logged")
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "Debes iniciar sesion para poder realizar esta accion"
+    })
     })
     .catch(err=>{
       console.log(err)
@@ -91,7 +95,7 @@ class Description extends Component {
 const Descripcion = connect(state => ({
   users: state.users
 }),{
-  updateResource
+  updateResource,addNotification
 })(Description);
 
 export default Descripcion;

@@ -23,7 +23,7 @@ class notification extends Component {
 }
 
 let Notif = notification
-Notif = connect(state => ({users: state.users }), {clearNotification})(notification);
+Notif = connect(state => ({notifications: state.notifications }), {clearNotification})(notification);
 
 class Notification extends Component {
     
@@ -33,7 +33,7 @@ class Notification extends Component {
     render () {
         console.log(this.props);
         return <div ref={el =>{ this.container = el; }}>
-        {map(this.props.users, (notif,i) => {
+        {map(this.props.notifications, (notif,i) => {
             return(
                 <Notif key={i} id={i} notif={notif}/>
             )
@@ -44,6 +44,6 @@ class Notification extends Component {
 
 
 }
-let Notifications = Notifications = connect(state => ({ users: state.users }), { clearNotification })(Notification)
+let Notifications = Notifications = connect(state => ({ notifications: state.notifications }), { clearNotification })(Notification)
 
 export default withRouter(Notifications);

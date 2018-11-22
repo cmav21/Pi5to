@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom'
 import CommentBox from './CommentBox'
 import { getResource } from '../../actions/UserActions'
 import { connect } from 'react-redux'
+import Notification from '../Notification/notification'
+
 
 class ResourceDescription extends Component {
 
@@ -18,6 +20,7 @@ class ResourceDescription extends Component {
     return (
       <div className="hero is-light is-fullheight">
         <TopBar />
+        <Notification/>
         <Description resource={resource}/>
         <CommentBox comments={resource.comentarios}/>
       </div>
