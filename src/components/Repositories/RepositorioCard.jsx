@@ -19,13 +19,19 @@ class RepositorioCard extends Component {
       .catch( err => { alert(err) })
   };
 
+  // position: relative;
+  // top: -40px;
+  // left: 204px;
+
   render() {
     const c = this.props.users.userLogged ?
                 this.props.users.userLogged.tipo === "MANAGER" ? "card card--big" : "card card--big cv"
               : "card card--big cv";
     return (
         <CardWrapper className={c}> 
-        <div className="card__image" style={{ backgroundImage: `url(${modalImagePicker()})` }} onClick={() => this.props.history.push(`/repository/${this.props.repo.id}`)}/>
+        <div className="card__image" 
+             style={{ backgroundImage: `url(${modalImagePicker()})` }} 
+             onClick={() => this.props.history.push(`/repository/${this.props.repo.id}`)}/>
           <h2 className="card__title">{this.props.repo.nombre}</h2><span
           className="card__subtitle">By ... </span>
           <p className="card__text">{this.props.repo.descripcion}</p>
@@ -35,7 +41,7 @@ class RepositorioCard extends Component {
                 <Link to={`/repositories/${this.props.repo.id}/addresource`}>
                   <button className="card__button"> Agregar recurso</button>
                 </Link>
-                <EditRepo/>
+                <EditRepo repo={this.props.repo} fetch={this.props.fetchRepos}/>
                 <Confirmation onAccept={this.onDelete} text={"Eliminar"}/>
               </div>:
               <div/>
