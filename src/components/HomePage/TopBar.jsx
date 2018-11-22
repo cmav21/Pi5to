@@ -18,7 +18,7 @@ class TopBar extends Component {
 
   renderManagerButtons = () => {
     const user = this.props.users.userLogged;
-    if(user && user.tipo !== "MANAGER"){
+    if(user){
       return (<Link to="/about" className="navbar-item">
         ¿Qué es UCHub?
       </Link>)

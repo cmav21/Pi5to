@@ -3,7 +3,7 @@ import { validateEmail } from "../../../helpers/helpers";
 import axios from 'axios'
 import API from '../../../api'
 import connect from "react-redux/es/connect/connect";
-import {loginSuccess} from "../../../actions/UserActions";
+import {loginSuccess,addNotification} from "../../../actions/UserActions";
 import { withRouter } from 'react-router-dom';
 
 class SignUpForm extends Component {
@@ -56,12 +56,17 @@ class SignUpForm extends Component {
   *   Functionality methods
   * */
   upload = () => {
-    //TODO: modals
     if(this.state.cuenta.length !== 8){
-      return;
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "La contraseña debe de tener 8 caracteres"
+      });
     }
     if(this.state.contrasena !== this.state.contrasena2){
-      return;
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "La contraseñas deben coincidir"
+      })
     }
     const data = {
       'name': this.state.nombre,
@@ -79,9 +84,11 @@ class SignUpForm extends Component {
         err = true;
     });
 
-    // TODO : create modal to show errors
     if(err) {
-      return;
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "Verifica alguno de los campos"
+      })
     }
 
     axios.post(`${API}/usuarios/`, data)

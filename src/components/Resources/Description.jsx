@@ -27,7 +27,6 @@ class Description extends Component {
         this.props.updateResource(res);
       }
       else 
-      // TODO: create alert that you have to be logged
       this.props.addNotification({
         class: "notification is-danger",
         strong: "Debes iniciar sesion para poder realizar esta accion"
