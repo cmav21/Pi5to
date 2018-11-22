@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./UserSignUp.scss"
 import SignUpForm from './SignUpForm'
+import Notifications from '../../Notification/notification'
 
 
 class UserSignUp extends Component {
@@ -8,6 +9,7 @@ class UserSignUp extends Component {
   render() {
     return (
       <div className={"booty"}>
+        <Notifications/>
         <div className="signup__container">
           <div className="container__child signup__thumbnail">
             <div className="thumbnail__logo">

@@ -16,7 +16,7 @@ export const Card = styled.div`
     opacity: 1;
   }
 `
-
+// DUMP Component
 const RepoResourceCard = (props) => <React.Fragment>
     <Card className={"card card--big"} >
     <div onClick={() => props.history.push(`/resource/${props.resource.id}`)}>
@@ -33,6 +33,9 @@ const RepoResourceCard = (props) => <React.Fragment>
       </div>
       <p className="card__text">{props.resource.descripcion}</p>
     </div>
+    { 
+      props.users.userLogged.tipo === "MANAGER" && 
+      
       <div className="card__action-bar">
         <button className="card__button" onClick = {() => { 
             axios.delete(`${API}/${props.resource.id}`)
@@ -45,6 +48,8 @@ const RepoResourceCard = (props) => <React.Fragment>
                 props.history.push(`/repository/${props.match.params.id}`)})
         }}> Eliminar recurso</button>
       </div>
+    
+    }
     </Card>
   </React.Fragment>
 
