@@ -9,7 +9,6 @@ class UserSignUp extends Component {
   render() {
     return (
       <div className={"booty"}>
-        <Notifications/>
         <div className="signup__container">
           <div className="container__child signup__thumbnail">
             <div className="thumbnail__logo">
@@ -25,6 +24,7 @@ class UserSignUp extends Component {
             <SignUpForm/>
           </div>
         </div>
+        <Notifications/>
       </div>
     );
   }

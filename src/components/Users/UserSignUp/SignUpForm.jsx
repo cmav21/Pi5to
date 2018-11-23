@@ -55,18 +55,31 @@ class SignUpForm extends Component {
   /*
   *   Functionality methods
   * */
+
+  handleErrores = (content) => {
+    let errores = ""
+    content.forEach(element => {
+      errores += element
+    });
+    return errores;
+  };
+
   upload = () => {
+    let content = [];
+    let errores = ""
     if(this.state.cuenta.length !== 8){
       this.props.addNotification({
         class: "notification is-danger",
-        strong: "La contraseña debe de tener 8 caracteres"
-      });
+        strong: "El numero de cuenta debe tener 8 caracteres"
+      })
+      return 0;
     }
     if(this.state.contrasena !== this.state.contrasena2){
       this.props.addNotification({
         class: "notification is-danger",
-        strong: "La contraseñas deben coincidir"
+        strong: "Las contraseñas deben coincidir"
       })
+      return 0;
     }
     const data = {
       'name': this.state.nombre,
@@ -89,6 +102,7 @@ class SignUpForm extends Component {
         class: "notification is-danger",
         strong: "Verifica alguno de los campos"
       })
+      return err;
     }
 
     axios.post(`${API}/usuarios/`, data)
@@ -97,11 +111,18 @@ class SignUpForm extends Component {
           this.props.history.push("/");
           this.props.loginSuccess(res.data)
         } else{
-          alert("Ha ocurrido un error")
+          this.props.addNotification({
+            class: "notification is-danger",
+            strong: "verifica alguno de los campos ingresados"
+        })
         }
       })
       .catch(err => {
-        alert(err)
+        errores = this.handleErrores(content)
+        this.props.addNotification({
+          class: "notification is-danger",
+          strong: "Ha ocurrido un error, intentalo denuevo"
+        })
       })
   };
 
@@ -248,7 +269,7 @@ class SignUpForm extends Component {
 let SignUp = connect( state => ({
   users: state.users
 }), {
-  loginSuccess
+  loginSuccess,addNotification
 })(SignUpForm);
 
 
