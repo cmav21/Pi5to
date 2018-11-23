@@ -3,7 +3,7 @@ import { validateEmail } from "../../../helpers/helpers";
 import axios from 'axios'
 import API from '../../../api'
 import connect from "react-redux/es/connect/connect";
-import {loginSuccess} from "../../../actions/UserActions";
+import {loginSuccess,addNotification} from "../../../actions/UserActions";
 import { withRouter } from 'react-router-dom';
 
 class SignUpForm extends Component {
@@ -55,13 +55,31 @@ class SignUpForm extends Component {
   /*
   *   Functionality methods
   * */
+
+  handleErrores = (content) => {
+    let errores = ""
+    content.forEach(element => {
+      errores += element
+    });
+    return errores;
+  };
+
   upload = () => {
-    //TODO: modals
+    let content = [];
+    let errores = ""
     if(this.state.cuenta.length !== 8){
-      return;
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "El numero de cuenta debe tener 8 caracteres"
+      })
+      return 0;
     }
     if(this.state.contrasena !== this.state.contrasena2){
-      return;
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "Las contraseñas deben coincidir"
+      })
+      return 0;
     }
     const data = {
       'name': this.state.nombre,
@@ -79,9 +97,12 @@ class SignUpForm extends Component {
         err = true;
     });
 
-    // TODO : create modal to show errors
     if(err) {
-      return;
+      this.props.addNotification({
+        class: "notification is-danger",
+        strong: "Verifica alguno de los campos"
+      })
+      return err;
     }
 
     axios.post(`${API}/usuarios/`, data)
@@ -90,11 +111,18 @@ class SignUpForm extends Component {
           this.props.history.push("/");
           this.props.loginSuccess(res.data)
         } else{
-          alert("Ha ocurrido un error")
+          this.props.addNotification({
+            class: "notification is-danger",
+            strong: "verifica alguno de los campos ingresados"
+        })
         }
       })
       .catch(err => {
-        alert(err)
+        errores = this.handleErrores(content)
+        this.props.addNotification({
+          class: "notification is-danger",
+          strong: "Ha ocurrido un error, intentalo denuevo"
+        })
       })
   };
 
@@ -241,7 +269,7 @@ class SignUpForm extends Component {
 let SignUp = connect( state => ({
   users: state.users
 }), {
-  loginSuccess
+  loginSuccess,addNotification
 })(SignUpForm);
 
 

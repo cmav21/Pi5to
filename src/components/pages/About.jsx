@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class WhatIs extends Component {
-  render() {
-    return (
-      <div>
-        What is UCHub
-      </div>
-    );
-  }
+class About extends Component {
+    render() {
+        return (
+            <div>
+                {/* TODO: landing page */}
+            </div>
+        );
+    }
 }
 
-export default WhatIs;
+export default About;

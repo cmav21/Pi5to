@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./UserSignUp.scss"
 import SignUpForm from './SignUpForm'
+import Notifications from '../../Notification/notification'
 
 
 class UserSignUp extends Component {
@@ -23,6 +24,7 @@ class UserSignUp extends Component {
             <SignUpForm/>
           </div>
         </div>
+        <Notifications/>
       </div>
     );
   }
